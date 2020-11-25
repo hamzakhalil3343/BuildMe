@@ -1,10 +1,16 @@
 import React from 'react';
+import {Router,Route} from 'react-dom';
+import {useHistory} from 'react-router-dom'
 import '../Assets/Css/SignIn.css';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { useState } from 'react';
+import SignInCustomers from './SignInCustomers';
+
 import axios from 'axios';
+
 const SignIn = () => {
   const [name, setName] = useState({ username: '', password: '' })
+  const history=useHistory();
   const handleSubmit=(event)=>{
    alert('name and pass is'+JSON.stringify(name));
    event.preventDefault();
@@ -12,6 +18,7 @@ const SignIn = () => {
       .then(res => {
         console.log(res);
         console.log(res.data);
+         history.push('/welcome')
       }).catch(err=>{
         console.log(err);
       });
