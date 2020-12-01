@@ -3,17 +3,17 @@ import {Grid,TextField,Button} from '@material-ui/core';
 import { useState } from 'react';
 import axios from 'axios';
 const ShopSignIn = () => {
-    const [credentials, setCredentials] = useState({ shopName: '', password: '' })
+    const [credentials, setCredentials] = useState({ shop_name: '', password: '' })
     const handleSubmit=(event)=>{
      alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
-    //   axios.post(`http://localhost:3000/users/login`, name )
-    //     .then(res => {
-    //       console.log(res);
-    //       console.log(res.data);
-    //     }).catch(err=>{
-    //       console.log(err);
-    //     });
+      axios.post(`http://localhost:3000/shops/shopLogin`, credentials )
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        }).catch(err=>{
+          console.log(err);
+        });
       
     }
     return (
@@ -23,8 +23,8 @@ const ShopSignIn = () => {
              <h1>Sign In</h1>
             <form onSubmit={handleSubmit} > 
             <TextField id="standard-basic" label="Shopname" fullWidth 
-             value={credentials.shopName}
-				    onChange={e => setCredentials({...credentials,shopName:e.target.value})}/>
+             value={credentials.shop_name}
+				    onChange={e => setCredentials({...credentials,shop_name:e.target.value})}/>
            
             
             <TextField id="standard-basic" label="Password" fullWidth style={{marginBottom:'20px',marginTop:'5px'}}

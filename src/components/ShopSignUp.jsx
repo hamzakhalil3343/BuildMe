@@ -2,9 +2,10 @@ import React from 'react';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
 const ShopSignUp = () => {
-    const [credentials, setCredentials] = useState({ username: '', password: '' });
+    const [credentials, setCredentials] = useState({ shop_name: '', honour_firstname: '',honour_lastname:'',password:'' });
     const useStyles = makeStyles((theme) => ({
         root: {
           '& > *': {
@@ -21,15 +22,15 @@ const ShopSignUp = () => {
       }));
       const classes = useStyles();
     const handleSubmit=(event)=>{
-     alert('name and pass is'+JSON.stringify(credentials));
+     //alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
-    //   axios.post(`http://localhost:3000/users/login`, name )
-    //     .then(res => {
-    //       console.log(res);
-    //       console.log(res.data);
-    //     }).catch(err=>{
-    //       console.log(err);
-    //     });
+      axios.post(`http://localhost:3000/shops`, credentials )
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        }).catch(err=>{
+          console.log(err);
+        });
       
     }
     return (
@@ -38,10 +39,22 @@ const ShopSignUp = () => {
         
              <h1>Sign Up</h1>
             <form className={classes.root} onSubmit={handleSubmit}> 
-            <TextField id="outlined-basic" label="First Name"  variant="outlined" />
-            <TextField id="outlined-basic"  label="Last Name"  variant="outlined" />
-            <TextField id="outlined-basic" label="Username"  variant="outlined" />
-            <TextField id="outlined-basic" label="Password" type="password"  variant="outlined" />
+            <TextField id="outlined-basic" label="First Name"  variant="outlined" 
+             value={credentials.honour_firstname}
+				    onChange={e => setCredentials({...credentials,honour_firstname:e.target.value})}
+             />
+            <TextField id="outlined-basic"  label="Last Name"  variant="outlined"
+            value={credentials.honour_lastname}
+            onChange={e => setCredentials({...credentials,honour_lastname:e.target.value})}
+             />
+            <TextField id="outlined-basic" label="Shop Name"  variant="outlined" 
+            value={credentials.shop_name}
+				    onChange={e => setCredentials({...credentials,shop_name:e.target.value})}
+            />
+            <TextField id="outlined-basic" label="Password" type="password"  variant="outlined" 
+             value={credentials.password}
+             onChange={e => setCredentials({...credentials,password:e.target.value})}
+            />
             <Button variant="contained" type="submit" color="primary">
               Sign Up
 </Button>
