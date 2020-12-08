@@ -13,20 +13,16 @@ import SignUpCustomers from './components/SignUpCustomers';
 import Wecome from './components/Wecome';
 import ShopSignUp from './components/ShopSignUp';
 import ShopSignIn from './components/ShopSignIn';
+import ResponsiveDrawer from './components/ShopComponents/ResponsiveDrawer';
 
 function App() {
   return (
     <div className="App">
-     <BrowserRouter>
-     <Switch>
-      <Route exact path="/" component={ShopSignIn} />
+      <BrowserRouter>
+      <ResponsiveDrawer/>
+     </BrowserRouter> 
       
-     <Route path="/welcome" component={Wecome}/>
-      <Route path="*" component={() => <Redirect to="/" />} />
-    </Switch>
-     </BrowserRouter>
-      
-      
+    
      
     </div>
   );

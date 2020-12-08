@@ -7,7 +7,7 @@ const ShopSignIn = () => {
     const handleSubmit=(event)=>{
      alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
-      axios.post(`http://localhost:3000/shops/shopLogin`, credentials )
+      axios.post(`http://localhost:3000/shops/5fc894ea12181321e34280ed/wood`, {"quantitie":"7000","wood_type":"Type B"} )
         .then(res => {
           console.log(res);
           console.log(res.data);
