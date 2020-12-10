@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import React from 'react';
 
-const AddIronComponent = () => {
+const AddPaintsComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '', quantitie: '', iron_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', paint_type: '', price: '' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -41,13 +41,17 @@ const AddIronComponent = () => {
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Dimensions" variant="outlined"
+                    value={credentials.dimension}
+                    onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
+                />
                 <TextField id="outlined-basic" label="Quantitie" variant="outlined"
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Type" variant="outlined"
-                    value={credentials.iron_type}
-                    onChange={e => setCredentials({ ...credentials, iron_type: e.target.value })}
+                    value={credentials.paint_type}
+                    onChange={e => setCredentials({ ...credentials, paint_type: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Price"  variant="outlined"
                     value={credentials.price}
@@ -55,7 +59,7 @@ const AddIronComponent = () => {
                 />
    
                 <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10 }}>
-                    <b>Add Iron</b>
+                    <b>Add Paint</b>
                 </Button>
               
 
@@ -64,4 +68,4 @@ const AddIronComponent = () => {
     );
 };
 
-export default AddIronComponent;
+export default AddPaintsComponent;

@@ -24,7 +24,17 @@ import WoodComponent from './WoodComponent';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
 import ExtensionIcon from '@material-ui/icons/Extension';
+import ApartmentIcon from '@material-ui/icons/Apartment';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import FormatPaintIcon from '@material-ui/icons/FormatPaint';
+import SelectAllIcon from '@material-ui/icons/SelectAll';
+//Sub Components
 import IronComponent from './IronComponent';
+import GlassComponent from './GlassComponent';
+import TilesComponent from './TilesComponent';
+import SanitaryComponent from './SanitaryComponent';
+import PaintsComponent from './PaintsComponent';
+import ElectricStoreComponent from './ElectricStoreComponent';
 
 const drawerWidth = 240;
 
@@ -120,7 +130,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Build Me 
+                        Build Me
             </Typography>
                 </Toolbar>
             </AppBar>
@@ -149,32 +159,59 @@ function ResponsiveDrawer(props) {
                             <ListItemText primary="Iron" />
                         </ListItem>
                     </Link>
-                    
+
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
                         to="/wood"
                     >
                         <ListItem button onClick={(e) => { history.push('/wood'); }} >
-            <ListItemIcon><ExtensionIcon /></ListItemIcon>
+                            <ListItemIcon><ExtensionIcon /></ListItemIcon>
                             <ListItemText primary="wood" />
                         </ListItem>
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/wood"
+                        to="/glass"
                     >
-                        <ListItem button onClick={(e) => { history.push('/wood'); }} >
+                        <ListItem button onClick={(e) => { history.push('/glass'); }} >
                             <ListItemIcon><ViewHeadlineIcon /></ListItemIcon>
-                            <ListItemText primary="wood" />
+                            <ListItemText primary="Glass" />
                         </ListItem>
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/wood"
+                        to="/tile"
                     >
-                        <ListItem button onClick={(e) => { history.push('/wood'); }} >
-                            <ListItemIcon><AddCircleIcon /></ListItemIcon>
-                            <ListItemText primary="wood" />
+                        <ListItem button onClick={(e) => { history.push('/tile'); }} >
+                            <ListItemIcon><ApartmentIcon /></ListItemIcon>
+                            <ListItemText primary="Tile" />
+                        </ListItem>
+                    </Link>
+                    <Link
+                        style={{ color: "inherit", textDecoration: "none" }}
+                        to="/sanitary"
+                    >
+                        <ListItem button onClick={(e) => { history.push('/sanitary'); }} >
+                            <ListItemIcon><ReceiptIcon /></ListItemIcon>
+                            <ListItemText primary="Sanitary" />
+                        </ListItem>
+                    </Link>
+                    <Link
+                        style={{ color: "inherit", textDecoration: "none" }}
+                        to="/paint"
+                    >
+                        <ListItem button onClick={(e) => { history.push('/paint'); }} >
+                            <ListItemIcon><FormatPaintIcon /></ListItemIcon>
+                            <ListItemText primary="Paint" />
+                        </ListItem>
+                    </Link>
+                    <Link
+                        style={{ color: "inherit", textDecoration: "none" }}
+                        to="/electricStore"
+                    >
+                        <ListItem button onClick={(e) => { history.push('/electricStore'); }} >
+                            <ListItemIcon><SelectAllIcon /></ListItemIcon>
+                            <ListItemText primary="Electric Store" />
                         </ListItem>
                     </Link>
 
@@ -201,7 +238,14 @@ function ResponsiveDrawer(props) {
                     <Route exact path="/" component={IronComponent} />
 
                     <Route path="/wood" component={WoodComponent} />
+                    <Route path="/glass" component={GlassComponent} />
+                    <Route path="/tile" component={TilesComponent} />
+                    <Route path="/sanitary" component={SanitaryComponent} />
+                    <Route path="/paint" component={PaintsComponent} />
+                    <Route path="/electricStore" component={ElectricStoreComponent} />
+
                     <Route path="*" component={() => <Redirect to="/" />} />
+
                 </Switch>
 
 

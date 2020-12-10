@@ -5,7 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import AddIronComponent from './AddIronComponent';
+import AddGlassComponent from './AddGlassComponent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Add Iron ', 'Get Iron', 'Edit Iron'];
+  return ['Add Glass ', 'Get Glass', 'Edit Glass'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddIronComponent/>;
+      return <AddGlassComponent/>;
     case 1:
       return 'What is an ad group anyways?';
     case 2:
@@ -36,7 +36,7 @@ function getStepContent(step) {
       return 'Unknown step';
   }
 }
-const IronComponent = () => {
+const GlassComponent = () => {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
@@ -147,4 +147,4 @@ const IronComponent = () => {
     );
 };
 
-export default IronComponent;
+export default GlassComponent;

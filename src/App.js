@@ -11,8 +11,6 @@ import SignUpLabour from './components/SignUpLabour';
 import SignInCustomers from './components/SignInCustomers';
 import SignUpCustomers from './components/SignUpCustomers';
 import Wecome from './components/Wecome';
-import ShopSignUp from './components/ShopSignUp';
-import ShopSignIn from './components/ShopSignIn';
 import ResponsiveDrawer from './components/ShopComponents/ResponsiveDrawer';
 
 function App() {
