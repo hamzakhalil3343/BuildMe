@@ -108,7 +108,7 @@ function ResponsiveDrawer(props) {
         setOpen(false);
     };
     const history = useHistory();
-
+    const id = '5fd22314e440b01a189d2f0f';
 
     return (
         <div className={classes.root}>
@@ -152,26 +152,26 @@ function ResponsiveDrawer(props) {
                 <List>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/"
+                        to="/Shops/:id/Iron"
                     >
                         <ListItem button >
                             <ListItemIcon><AddCircleIcon /></ListItemIcon>
-                            <ListItemText primary="Iron" />
+                            <ListItemText primary="iron" />
                         </ListItem>
                     </Link>
 
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/wood"
+                        to="/Shop/:id/wood"
                     >
-                        <ListItem button onClick={(e) => { history.push('/wood'); }} >
+                        <ListItem button >
                             <ListItemIcon><ExtensionIcon /></ListItemIcon>
                             <ListItemText primary="wood" />
                         </ListItem>
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/glass"
+                        to="/Shops/glass"
                     >
                         <ListItem button onClick={(e) => { history.push('/glass'); }} >
                             <ListItemIcon><ViewHeadlineIcon /></ListItemIcon>
@@ -180,7 +180,7 @@ function ResponsiveDrawer(props) {
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/tile"
+                        to="/Shops/tile"
                     >
                         <ListItem button onClick={(e) => { history.push('/tile'); }} >
                             <ListItemIcon><ApartmentIcon /></ListItemIcon>
@@ -189,7 +189,7 @@ function ResponsiveDrawer(props) {
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/sanitary"
+                        to="/Shops/sanitary"
                     >
                         <ListItem button onClick={(e) => { history.push('/sanitary'); }} >
                             <ListItemIcon><ReceiptIcon /></ListItemIcon>
@@ -198,7 +198,7 @@ function ResponsiveDrawer(props) {
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/paint"
+                        to="/Shops/paint"
                     >
                         <ListItem button onClick={(e) => { history.push('/paint'); }} >
                             <ListItemIcon><FormatPaintIcon /></ListItemIcon>
@@ -207,7 +207,7 @@ function ResponsiveDrawer(props) {
                     </Link>
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
-                        to="/electricStore"
+                        to="/Shops/electricStore"
                     >
                         <ListItem button onClick={(e) => { history.push('/electricStore'); }} >
                             <ListItemIcon><SelectAllIcon /></ListItemIcon>
@@ -228,18 +228,19 @@ function ResponsiveDrawer(props) {
                 })}
             >
                 <div className={classes.drawerHeader} />
+                {id}
 
                 <Switch>
-                    <Route exact path="/" component={IronComponent} />
+                    <Route exact path="/Shops/:id/iron" component={IronComponent} />
 
-                    <Route path="/wood" component={WoodComponent} />
-                    <Route path="/glass" component={GlassComponent} />
-                    <Route path="/tile" component={TilesComponent} />
-                    <Route path="/sanitary" component={SanitaryComponent} />
-                    <Route path="/paint" component={PaintsComponent} />
-                    <Route path="/electricStore" component={ElectricStoreComponent} />
+                    <Route path="/Shops/:id/wood" component={WoodComponent} />
+                    <Route path="/Shops/:id/glass" component={GlassComponent} />
+                    <Route path="/Shops/:id/tile" component={TilesComponent} />
+                    <Route path="/Shops/sanitary" component={SanitaryComponent} />
+                    <Route path="/Shops/paint" component={PaintsComponent} />
+                    <Route path="/Shops/electricStore" component={ElectricStoreComponent} />
 
-                    <Route path="*" component={() => <Redirect to="/" />} />
+                   
 
                 </Switch>
 

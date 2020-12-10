@@ -26,8 +26,8 @@ const ShopSignUp = () => {
     event.preventDefault();
     axios.post(`http://localhost:3000/shops`, credentials)
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        //console.log(res);
+        console.log('Your data id is ',res.data);
       }).catch(err => {
         console.log(err);
       });

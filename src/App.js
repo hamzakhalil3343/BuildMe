@@ -12,12 +12,23 @@ import SignInCustomers from './components/SignInCustomers';
 import SignUpCustomers from './components/SignUpCustomers';
 import Wecome from './components/Wecome';
 import ResponsiveDrawer from './components/ShopComponents/ResponsiveDrawer';
+import ShopSignUp from './components/ShopComponents/ShopSignUp'
+import ShopSignIn from './components/ShopComponents/ShopSignIn'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <ResponsiveDrawer/>
+     
+      <Switch>
+                    <Route exact path="/" component={ShopSignIn} />
+
+                    <Route path="/Shops" component={ResponsiveDrawer} />
+
+
+                    <Route path="*" component={() => <Redirect to="/" />} />
+
+                </Switch>
      </BrowserRouter> 
       
     

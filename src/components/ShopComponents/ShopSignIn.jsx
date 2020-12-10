@@ -2,15 +2,19 @@ import React from 'react';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { useState } from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom'
+import ResponsiveDrawer from './ResponsiveDrawer';
 const ShopSignIn = () => {
-    const [credentials, setCredentials] = useState({ shop_name: '', password: '' })
+    const [credentials, setCredentials] = useState({ shop_name: '', password: '' });
+    const history=useHistory();
     const handleSubmit=(event)=>{
-     alert('name and pass is'+JSON.stringify(credentials));
+    // alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
-      axios.post(`http://localhost:3000/shops/5fc894ea12181321e34280ed/wood`, {"quantitie":"7000","wood_type":"Type B"} )
+      axios.post(`http://localhost:3000/shops/ShopLogin`, credentials )
         .then(res => {
           console.log(res);
-          console.log(res.data);
+          console.log(res.data.id);
+          history.push({pathname:'/Shops/'+res.data.id+'/Iron',state:{id:res.data.id}});
         }).catch(err=>{
           console.log(err);
         });
