@@ -23,10 +23,10 @@ function App() {
       <Switch>
                     <Route exact path="/" component={ShopSignIn} />
 
-                    <Route path="/Shops" component={ResponsiveDrawer} />
+                    <Route path="/Shops/:id" component={ResponsiveDrawer} />
 
 
-                    <Route path="*" component={() => <Redirect to="/" />} />
+                    {/* <Route path="*" component={() => <Redirect to="/" />} /> */}
 
                 </Switch>
      </BrowserRouter> 
