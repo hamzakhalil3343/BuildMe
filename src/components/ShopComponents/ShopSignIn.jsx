@@ -18,6 +18,7 @@ const ShopSignIn = () => {
         .then(res => {
           console.log(res);
           console.log(res.data.id);
+          localStorage.setItem('id',res.data.id);
           history.push({pathname:'/Shops/'+res.data.id+'/Iron',state:{id:res.data.id}});
           //return(<UserContext.Provider value={res.data.id}/>)
         }).catch(err=>{
