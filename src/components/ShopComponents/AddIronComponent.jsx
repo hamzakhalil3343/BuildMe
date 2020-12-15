@@ -25,7 +25,8 @@ const AddIronComponent = () => {
     const handleSubmit = (event) => {
         //alert('name and pass is'+JSON.stringify(credentials));
         event.preventDefault();
-        axios.post(`http://localhost:3000/shops`, credentials)
+        const id = localStorage.getItem('id');
+        axios.post(`http://localhost:3000/shops/${id}/iron`, credentials)
             .then(res => {
                 console.log(res);
                 console.log(res.data);

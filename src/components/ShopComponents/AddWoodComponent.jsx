@@ -25,13 +25,15 @@ const AddWoodComponent = () => {
     const handleSubmit = (event) => {
         //alert('name and pass is'+JSON.stringify(credentials));
         event.preventDefault();
-        axios.post(`http://localhost:3000/shops`, credentials)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            }).catch(err => {
-                console.log(err);
-            });
+        const id = localStorage.getItem('id');
+        axios.post(`http://localhost:3000/shops/${id}/wood`, credentials)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            alert('Success !');
+        }).catch(err => {
+            console.log(err);
+        });
 
     }
     return (
