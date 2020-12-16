@@ -6,6 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddIronComponent from './AddIronComponent';
+import GetIronComponent from './GetIronComponent';
+import UDComponent from './UDComponent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
+    
   },
   instructions: {
     marginTop: theme.spacing(1),
@@ -29,9 +32,9 @@ function getStepContent(step) {
     case 0:
       return <AddIronComponent/>;
     case 1:
-      return 'What is an ad group anyways?';
+      return <GetIronComponent/>;
     case 2:
-      return 'This is the bit I really care about!';
+      return <UDComponent/>;
     default:
       return 'Unknown step';
   }
