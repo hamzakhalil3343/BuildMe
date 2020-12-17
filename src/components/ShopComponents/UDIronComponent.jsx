@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection:'row'
   },
 }));
-function UDComponent(props) {
+function UDIronComponent(props) {
     const classes = useStyles();
     const [data,setData]=useState([]);
   
@@ -55,4 +55,4 @@ function UDComponent(props) {
     );
 }
 
-export default UDComponent;
+export default UDIronComponent;

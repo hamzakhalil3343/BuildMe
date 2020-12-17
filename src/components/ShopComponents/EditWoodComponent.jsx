@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
 }));
-function EditIronComponent(props) {
+function EditWoodComponent(props) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, iron_type: props.data.iron_type, price: props.data.price });
+    const [] = React.useState(false);
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, wood_type: props.data.wood_type, price: props.data.price });
           const handleSubmit = () => {
             //alert('name and pass is'+JSON.stringify(credentials));
            
             const id = localStorage.getItem('id');
-            axios.put(`http://localhost:3000/shops/${id}/iron/${props.data._id}`, credentials)
+            axios.put(`http://localhost:3000/shops/${id}/wood/${props.data._id}`, credentials)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);
@@ -58,7 +58,7 @@ function EditIronComponent(props) {
         }
         const handleDelete =()=>{
             const id = localStorage.getItem('id');
-            axios.delete(`http://localhost:3000/shops/${id}/iron/${props.data._id}`)
+            axios.delete(`http://localhost:3000/shops/${id}/wood/${props.data._id}`)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);
@@ -99,9 +99,13 @@ function EditIronComponent(props) {
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Dimension" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.dimension}
+                    onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
+                />
                 <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
-                    value={credentials.iron_type}
-                    onChange={e => setCredentials({ ...credentials, iron_type: e.target.value })}
+                    value={credentials.wood_type}
+                    onChange={e => setCredentials({ ...credentials, wood_type: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Price"  variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.price}
@@ -120,4 +124,4 @@ function EditIronComponent(props) {
     );
 }
 
-export default EditIronComponent;
+export default EditWoodComponent;

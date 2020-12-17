@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddIronComponent from './AddIronComponent';
 import GetIronComponent from './GetIronComponent';
-import UDComponent from './UDComponent';
+import UDIronComponent from './UDIronComponent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +34,7 @@ function getStepContent(step) {
     case 1:
       return <GetIronComponent/>;
     case 2:
-      return <UDComponent/>;
+      return <UDIronComponent/>;
     default:
       return 'Unknown step';
   }

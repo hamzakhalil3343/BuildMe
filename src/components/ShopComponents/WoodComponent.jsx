@@ -6,6 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddWoodComponent from './AddWoodComponent';
+import GetWoodComponent from './GetWoodComponent';
+import UDWoodComponent from './UDWoodComponent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +31,9 @@ function getStepContent(step) {
     case 0:
       return <AddWoodComponent/>;
     case 1:
-      return 'What is an ad group anyways?';
+      return <GetWoodComponent/>;
     case 2:
-      return 'This is the bit I really care about!';
+      return <UDWoodComponent/>;
     default:
       return 'Unknown step';
   }
