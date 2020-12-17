@@ -6,6 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddSanitaryComponent from './AddSanitaryComponent';
+import GetSanitaryComponent from './GetSanitaryComponent';
+import UDSanitaryComponent from './UDSanitaryComponent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +31,9 @@ function getStepContent(step) {
     case 0:
       return <AddSanitaryComponent/>;
     case 1:
-      return 'What is an ad group anyways?';
+      return <GetSanitaryComponent/>;
     case 2:
-      return 'This is the bit I really care about!';
+      return <UDSanitaryComponent/>;
     default:
       return 'Unknown step';
   }
