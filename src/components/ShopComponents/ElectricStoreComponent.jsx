@@ -6,6 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddElectricStoreComponent from './AddElectricStoreComponent';
+import GetESComponent from './GetESComponent';
+import UDESComponent from './UDESComponent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +31,9 @@ function getStepContent(step) {
     case 0:
       return <AddElectricStoreComponent/>;
     case 1:
-      return 'What is an ad group anyways?';
+      return <GetESComponent/>;
     case 2:
-      return 'This is the bit I really care about!';
+      return <UDESComponent/>;
     default:
       return 'Unknown step';
   }
