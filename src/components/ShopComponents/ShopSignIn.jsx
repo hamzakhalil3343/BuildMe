@@ -2,17 +2,18 @@ import React from 'react';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { useState } from 'react';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
 import ResponsiveDrawer from './ResponsiveDrawer';
 
 // export const UserContext=React.createContext();
 const ShopSignIn = () => {
     const [credentials, setCredentials] = useState({ shop_name: '', password: '' });
     const history=useHistory();
+ 
+
     const handleSubmit=(event)=>{
     // alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
-     
      
       axios.post(`http://localhost:3000/shops/ShopLogin`, credentials )
         .then(res => {
