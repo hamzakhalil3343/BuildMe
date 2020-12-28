@@ -1,13 +1,8 @@
 import React,{useState} from 'react';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-<<<<<<< HEAD:src/components/LabourComponents/SignUpLabour.jsx
 import axios from 'axios';
-=======
-import '../../Assets/Css/SignUp.css'
-const SignUpLabour = () => {
-    const handleSubmit=()=>{
->>>>>>> ae1294a1ea301bf5c747d9173ead6f24a52a4ad7:src/components/SignUpLabour.jsx
+
 
 const SignUpLabour = () => {
   const [credentials, setCredentials] = useState({ username: '', firstname: '', lastname: '', password: '',user_type:'labour' });
@@ -42,7 +37,6 @@ const SignUpLabour = () => {
         
              <h1>Sign Up</h1>
             <form className={classes.root} onSubmit={handleSubmit}> 
-<<<<<<< HEAD:src/components/LabourComponents/SignUpLabour.jsx
             <TextField id="outlined-basic" label="First Name"  variant="outlined" 
              value={credentials.firstname}
              onChange={e => setCredentials({ ...credentials,firstname: e.target.value })}
@@ -60,13 +54,7 @@ const SignUpLabour = () => {
             onChange={e => setCredentials({ ...credentials, password: e.target.value })}
           />
             <Button variant="contained" type="submit" color="primary">
-=======
-            <TextField id="outlined-basic" label="First Name"  variant="outlined" />
-            <TextField id="outlined-basic"  label="Last Name"  variant="outlined" />
-            <TextField id="outlined-basic" label="Username"  variant="outlined" />
-            <TextField id="outlined-basic" label="Password" type="password"  variant="outlined" />
-            <Button variant="contained" style={{width:'45%',marginLeft:'10px'}} type="submit" color="primary">
->>>>>>> ae1294a1ea301bf5c747d9173ead6f24a52a4ad7:src/components/SignUpLabour.jsx
+
               Sign Up
 </Button>
 <Button variant="contained"  style={{width:'45%'}} color="primary">
