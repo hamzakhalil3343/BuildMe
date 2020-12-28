@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AddLabourDetails from './AddLabourDetails';
+import ViewLabourComponent from './ViewLabourComponent';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,8 +60,8 @@ function HomeTab(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Add Details" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Edit Info" {...a11yProps(0)} />
+          <Tab label="View " {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -68,7 +69,7 @@ function HomeTab(props) {
         <AddLabourDetails/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+       <ViewLabourComponent/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

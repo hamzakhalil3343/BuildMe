@@ -50,6 +50,7 @@ function AddLabourDetails(props) {
     }
     return (
         <div>
+            <img style={{width:"10%",height:'20%'}} src={"https://iconape.com/wp-content/files/ig/251729/png/251729.png"}></img>
             <form className={classes.root} onSubmit={handleSubmit}>
                 <TextField id="outlined-basic" label="Labour Type" variant="outlined"
                     value={credentials.labour_type}

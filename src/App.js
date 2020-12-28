@@ -4,8 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/SignIn';
 import SignUpAdmin from './components/SignUpAdmin';
-import SignUpContractor from './components/SignUpContractor'
-import SignInContractor from './components/SignInContractor'
+
 import SignInLabour from './components/LabourComponents/SignInLabour';
 import SignUpLabour from './components/LabourComponents/SignUpLabour';
 import SignInCustomers from './components/SignInCustomers';
@@ -15,6 +14,8 @@ import ResponsiveDrawer from './components/ShopComponents/ResponsiveDrawer';
 import ShopSignUp from './components/ShopComponents/ShopSignUp'
 import ShopSignIn from './components/ShopComponents/ShopSignIn'
 import LabourHomeComponent from './components/LabourComponents/LabourHomeComponent';
+import SignInContractor from './components/Contractor/SignInContractor';
+import SignUpContractor from './components/Contractor/SignUpContractor';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <BrowserRouter>
      
       <Switch>
-                    <Route exact path="/" component={SignInLabour} />
+                    <Route exact path="/" component={SignUpContractor} />
                     <Route path="/labour" component={LabourHomeComponent} />
 
                     {/* <Route path="/Shops/:id" component={ResponsiveDrawer} />
