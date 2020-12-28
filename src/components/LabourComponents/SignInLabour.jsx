@@ -9,7 +9,6 @@ const SignInLabour = () => {
     const [credentials, setcredentials] = useState({ username: '', password: '' });
     const history=useHistory();
     const handleSubmit=(event)=>{
-     alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
       axios.post(`http://localhost:3000/users/login`, credentials )
         .then(res => {

@@ -24,9 +24,9 @@ function AddLabourDetails(props) {
         fetch(`http://localhost:3000/labours/${id}`)
           .then((response) => response.json())
           .then((data) => {
-              alert('labour type is here',data.labour_Type);
-             setCredentials({...credentials,labour_type:data.labour_Type});
-             alert(JSON.stringify(credentials));
+             
+             setCredentials({...credentials,labour_type:data.labour_Type,hrs_worked:data.hrs_worked,labour_rate:data.labour_rate,TeamPart:data.TeamPart});
+            
           })
           .catch((e) => {
           
@@ -39,7 +39,7 @@ function AddLabourDetails(props) {
         //alert('name and pass is'+JSON.stringify(credentials));
         event.preventDefault();
         const id = localStorage.getItem('id');
-        axios.post(`http://localhost:3000/shops/${id}/iron`, credentials)
+        axios.put(`http://localhost:3000/labours/${id}`, credentials)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
