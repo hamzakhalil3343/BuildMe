@@ -1,4 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
+import {TextField,Button} from '@material-ui/core';
+
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -17,8 +20,10 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import QueuePlayNextIcon from '@material-ui/icons/QueuePlayNext';
-import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 const useStyles1 = makeStyles((theme) => ({
     root: {
@@ -126,7 +131,7 @@ function GetLabourComponent(props) {
     }));
     const classes = useStyles();
     const [data, setData] = useState([]);
-    const [, setOpen] = React.useState(false);
+    // const [, setOpen] = React.useState(false);
     const [] = useState('');
     const [loading] = useState(false);
     const [page, setPage] = React.useState(0);
@@ -159,13 +164,72 @@ function GetLabourComponent(props) {
     }, []);
 
 
+    const [open, setOpen] = React.useState(false);
+    const [credentials, setCredentials] = useState({ TeamPart: '', TeamDetails: '' });
+    const [lab_id,setLabID]=useState('');
+    const handleSubmit=(event)=>{
+        alert('name and pass is'+JSON.stringify(credentials)+lab_id);
+        event.preventDefault();
+        axios.put(`http://localhost:3000/labours/${lab_id}`, credentials)
+        .then(res => {
+            window.location.reload(false);
+            alert('successFully saved');
+            console.log(res.data);
+        }).catch(err => {
+            console.log(err);
+        });
+         
+       }
+    const handleOpen = (id) => {
+        setLabID(id);
+        setOpen(true);
+    };
 
+    const handleClose = () => {
+        setOpen(false);
+    };
 
 
 
 
     return (
         <div style={{ margin: 10 }}>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <h2 id="transition-modal-title">ADD to Team</h2>
+                        <form className={classes.root} onSubmit={handleSubmit} >
+                            <TextField id="standard-basic" name="username" label="Project Name"
+                                value={credentials.TeamPart}  fullWidth
+                                onChange={e => setCredentials({ ...credentials, TeamPart: e.target.value })} />
+ 
+
+                            <TextField id="standard-basic" label="ADD Details" multiline
+                                value={credentials.TeamDetails}
+                                onChange={e => setCredentials({ ...credentials, TeamDetails: e.target.value })}
+                                fullWidth
+                            />
+                            <br />
+                            <Button variant="contained" type="submit" color="primary" fullWidth style={{marginTop:'10px'}} >
+                                ADD
+                            </Button>
+                            
+
+                        </form>
+                    </div>
+                </Fade>
+            </Modal>
 
 
             {loading ? <LinearProgress />
@@ -216,6 +280,7 @@ function GetLabourComponent(props) {
                                             color="primary"
                                             className={classes.button}
                                             startIcon={<QueuePlayNextIcon />}
+                                            onClick={()=>handleOpen(row.labour_id)}
                                         >
                                             ADD to Team
                                      </Button>
