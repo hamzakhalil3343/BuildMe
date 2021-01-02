@@ -6,7 +6,7 @@ const ContractorHomeComponent = () => {
     return (
         <div>
                <ProminentAppBar/>
-            <HomeTab/>
+               <HomeTab/>
         </div>
     );
 };
