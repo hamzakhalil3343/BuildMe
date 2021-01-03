@@ -172,7 +172,7 @@ function GetLabourComponent(props) {
         event.preventDefault();
         axios.put(`http://localhost:3000/labours/${lab_id}`, credentials)
         .then(res => {
-            window.location.reload(false);
+           // window.location.reload(false);
             alert('successFully saved');
             console.log(res.data);
         }).catch(err => {

@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import GetLabourComponent from './GetLabourComponent';
+import FetchComponent from './FetchComponent';
 
 
 function TabPanel(props) {
@@ -69,7 +70,7 @@ function HomeTab(props) {
         <GetLabourComponent/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-       two
+       <FetchComponent/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
