@@ -7,8 +7,7 @@ import SignUpAdmin from './components/SignUpAdmin';
 
 import SignInLabour from './components/LabourComponents/SignInLabour';
 import SignUpLabour from './components/LabourComponents/SignUpLabour';
-import SignInCustomers from './components/SignInCustomers';
-import SignUpCustomers from './components/SignUpCustomers';
+
 import Wecome from './components/Wecome';
 import ResponsiveDrawer from './components/ShopComponents/ResponsiveDrawer';
 import ShopSignUp from './components/ShopComponents/ShopSignUp'
@@ -17,6 +16,9 @@ import LabourHomeComponent from './components/LabourComponents/LabourHomeCompone
 import SignInContractor from './components/Contractor/SignInContractor';
 import SignUpContractor from './components/Contractor/SignUpContractor';
 import ContractorHomeComponent from './components/Contractor/ContractorHomeComponent';
+import SignInCustomers from './components/CustomerComponents/SignInCustomers';
+import SignUpCustomers from './components/CustomerComponents/SignUpCustomers';
+import CustomerHomeComponent from './components/CustomerComponents/CustomerHomeComponent';
 
 function App() {
   return (
@@ -24,8 +26,9 @@ function App() {
       <BrowserRouter>
      
       <Switch>
-                    <Route exact path="/" component={SignInContractor} />
-                    <Route path="/contractor" component={ContractorHomeComponent} />
+                    <Route exact path="/" component={SignInCustomers} />
+                    <Route path="/customer" component={CustomerHomeComponent} />
+                    {/* <Route path="/contractor" component={ContractorHomeComponent} /> */}
                     {/* <Route path="/labour" component={LabourHomeComponent} /> */}
 
                     {/* <Route path="/Shops/:id" component={ResponsiveDrawer} />

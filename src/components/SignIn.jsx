@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom'
 import '../Assets/Css/SignIn.css';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { useState } from 'react';
-import SignInCustomers from './SignInCustomers';
 
 import axios from 'axios';
 
