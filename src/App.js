@@ -19,6 +19,7 @@ import ContractorHomeComponent from './components/Contractor/ContractorHomeCompo
 import SignInCustomers from './components/CustomerComponents/SignInCustomers';
 import SignUpCustomers from './components/CustomerComponents/SignUpCustomers';
 import CustomerHomeComponent from './components/CustomerComponents/CustomerHomeComponent';
+import SignUpInt_D from './components/InteriorDesigners/SignUpInt_D';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       <BrowserRouter>
      
       <Switch>
-                    <Route exact path="/" component={SignInCustomers} />
+                    <Route exact path="/" component={SignUpInt_D} />
                     <Route path="/customer" component={CustomerHomeComponent} />
                     {/* <Route path="/contractor" component={ContractorHomeComponent} /> */}
                     {/* <Route path="/labour" component={LabourHomeComponent} /> */}
