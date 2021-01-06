@@ -38,7 +38,7 @@ function FetchShopsComponent(props) {
         },[]);
     return (
         <Grid container className={classes.root} spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6} lg={12}>
           <Paper className={classes.paper}>
               {data.map((row)=>(
                     <CustomerCardComponent data={row}/>

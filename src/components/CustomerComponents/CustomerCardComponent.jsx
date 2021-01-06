@@ -15,6 +15,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+//Rating Imports 
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+
 const useStyles = makeStyles({
   root: {
     width:'50%',
@@ -33,7 +37,7 @@ const useStyles = makeStyles({
     textAlign:"left"
   },
   table: {
-    width: '865px',
+    width: '100%',
   }
 });
 function CustomerCardComponent(props) {
@@ -87,7 +91,7 @@ function CustomerCardComponent(props) {
 
         </CardContent>
         <CardActions >
-          { openIron  &&  <div>
+          { openIron  &&  <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -120,7 +124,7 @@ function CustomerCardComponent(props) {
 
         <Button size="small" onClick={()=>setOpenWood(true)}>Show Wood</Button>
         <CardActions >
-          { openWood  &&  <div>
+          { openWood  &&  <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -155,7 +159,7 @@ function CustomerCardComponent(props) {
 
          <Button size="small" onClick={()=>setOpenGlass(true)}>Show Glass </Button>
         <CardActions >
-          { openGlass  &&  <div>
+          { openGlass  &&  <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -189,7 +193,7 @@ function CustomerCardComponent(props) {
 
          <Button size="small" onClick={()=>setOpenSanitary(true)}>Show Sanitary </Button>
         <CardActions >
-          { openSanitary  &&  <div>
+          { openSanitary  &&   <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -224,7 +228,7 @@ function CustomerCardComponent(props) {
 
                <Button size="small" onClick={()=>setOpenTiles(true)}>Show Tile </Button>
         <CardActions >
-          { openTiles  &&  <div>
+          { openTiles  &&   <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -259,7 +263,7 @@ function CustomerCardComponent(props) {
 
          <Button size="small" onClick={()=>setOpenPaint(true)}>Show Paint </Button>
         <CardActions >
-          { openPaint  &&  <div>
+          { openPaint  &&   <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -291,7 +295,7 @@ function CustomerCardComponent(props) {
 
           <Button size="small" onClick={()=>setOpenES(true)}>Show Electric Store </Button>
         <CardActions >
-          { openES  &&  <div>
+          { openES  &&   <div style={{width:"100%"}}>
             <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -319,6 +323,23 @@ function CustomerCardComponent(props) {
               
               <br/><a href="#" onClick={()=>setOpenES(false)}>Close</a></div>}
         </CardActions>
+        <Box component="fieldset" mb={3} borderColor="transparent">
+        <Typography component="legend"><b>Give Rating :</b></Typography>
+        <Rating
+          name="simple-controlled"
+          value="0"
+          onChange={(event, newValue) => {
+           // setValue(newValue);
+           var cred = {"rating":newValue};
+           axios.put(`http://localhost:3000/shops/${props.data._id}`, cred )
+        .then(res => {
+          alert('success ');
+        }).catch(err=>{
+          alert('not success',err);
+        });
+          }}
+        />
+      </Box>
       </Card>
     );
 }
