@@ -22,6 +22,7 @@ import CustomerHomeComponent from './components/CustomerComponents/CustomerHomeC
 import SignUpInt_D from './components/InteriorDesigners/SignUpInt_D';
 import SignInInt_D from './components/InteriorDesigners/SignInInt_D';
 import IntDesHomeComponent from './components/InteriorDesigners/IntDesHomeComponent';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
       <BrowserRouter>
      
       <Switch>
-                    <Route exact path="/" component={SignInInt_D} />
+                    <Route exact path="/" component={Home} />
                     <Route path="/interiorDesigner" component={IntDesHomeComponent} />
                     {/* <Route path="/contractor" component={ContractorHomeComponent} /> */}
                     {/* <Route path="/labour" component={LabourHomeComponent} /> */}

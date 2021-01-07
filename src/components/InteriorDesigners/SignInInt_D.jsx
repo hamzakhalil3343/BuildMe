@@ -13,7 +13,7 @@ function SignInInt_D(props) {
       axios.post(`http://localhost:3000/users/login`, credentials )
         .then(res => {
           localStorage.setItem('id',res.data.id);
-          history.push('/customer');
+          history.push('/interiorDesigner');
         }).catch(err=>{
           console.log(err);
         });
