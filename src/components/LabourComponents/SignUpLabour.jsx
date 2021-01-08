@@ -2,17 +2,61 @@ import React,{useState} from 'react';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-
+import { store } from 'react-notifications-component';
 const SignUpLabour = () => {
   const [credentials, setCredentials] = useState({ username: '', firstname: '', lastname: '', password: '',user_type:'labour' });
     const handleSubmit=(event)=>{
       event.preventDefault();
+      if (credentials.username === '' || credentials.password ==='' || credentials.lastname === '' || credentials.firstname ==='' ){
+        store.addNotification({
+          title: "Sign Up Failed !",
+          message: "Please fill all the Fields",
+          type: "info",
+          insert: "top",
+          container: "bottom-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+      
+      });
+             return ; 
+       }
+      
       axios.post(`http://localhost:3000/users/signup`,credentials)
         .then(res => {
           //console.log(res);
-          console.log('Your data id is ',res.data);
+         // console.log('Your data id is ',res.data);
+         store.addNotification({
+          title: "Welcome !",
+          message: "Successfully Sign Up ",
+          type: "success",
+          insert: "top",
+          container: "bottom-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
         }).catch(err => {
-          console.log('an err occured' ,err.message);
+          //console.log('an err occured' ,err.message);
+          store.addNotification({
+            title: "Sign Up Failed !",
+            message: "Message "+err.message,
+            type: "danger",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         });
     }
     const useStyles = makeStyles((theme) => ({

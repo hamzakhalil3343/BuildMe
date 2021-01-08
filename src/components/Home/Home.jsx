@@ -141,6 +141,7 @@ function Home(props) {
   const classes = useStyles();
   const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorE2, setAnchorE2] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -150,8 +151,18 @@ function Home(props) {
     setAnchorEl(null);
   };
 
+  const handleClick2 = (event) => {
+    setAnchorE2(event.currentTarget);
+  };
+
+  const handleClose2 = () => {
+    setAnchorE2(null);
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+  const open2 = Boolean(anchorE2);
+  const id2 = open2 ? 'simple-popover' : undefined;
   return (
     <React.Fragment>
       <CssBaseline />
@@ -171,9 +182,47 @@ function Home(props) {
               Support
               </Link>
           </nav>
-          <Button href="#" color="primary" variant="outlined" className={classes.link}>
+          <Button  color="primary" variant="outlined" className={classes.link} onClick={handleClick2}>
             Login
             </Button>
+            <Popover
+                    id={id2}
+                    open={open2}
+                    anchorEl={anchorE2}
+                    onClose={handleClose2}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                  >
+                    <Typography className={classes.typography}>
+                      <nav fullWidth>
+                        <Link variant="button" fullWidth color="textPrimary" href="/ShopSignIn" className={classes.link}>
+                          Shop
+              </Link>
+                        <br />
+                        <Link variant="button" color="textPrimary" href="/SignInContractor" className={classes.link}>
+                          Contractor
+              </Link>
+                        <br />
+                        <Link variant="button" color="textPrimary" href="/SignInLabour" className={classes.link}>
+                          Labour
+              </Link>
+                        <br />
+                        <Link variant="button" color="textPrimary" href="SignInCustomer" className={classes.link}>
+                          Customer
+              </Link>
+                        <br />
+                        <Link variant="button" color="textPrimary" href="/SignInInteriorDesigner" className={classes.link}>
+                          Interior Designer
+              </Link>
+                      </nav>
+                    </Typography>
+                  </Popover>
         </Toolbar>
       </AppBar>
       {/* Hero unit */}
@@ -231,27 +280,27 @@ function Home(props) {
                     }}
                   >
                     <Typography className={classes.typography}>
-                    <nav fullWidth>
-            <Link variant="button" fullWidth color="textPrimary" href="/ShopSignUp" className={classes.link}>
-              Shop
+                      <nav fullWidth>
+                        <Link variant="button" fullWidth color="textPrimary" href="/ShopSignUp" className={classes.link}>
+                          Shop
               </Link>
-              <br/>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Contractor
+                        <br />
+                        <Link variant="button" color="textPrimary" href="/SignUpContractor" className={classes.link}>
+                          Contractor
               </Link>
-              <br/>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Labour
+                        <br />
+                        <Link variant="button" color="textPrimary" href="/SignUpLabour" className={classes.link}>
+                          Labour
               </Link>
-              <br/>
-              <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Customer
+                        <br />
+                        <Link variant="button" color="textPrimary" href="SignUpCustomer" className={classes.link}>
+                          Customer
               </Link>
-              <br/>
-            <Link variant="button" color="textPrimary" href="/SignInInteriorDesigner" className={classes.link}>
-              Interior Designer
+                        <br />
+                        <Link variant="button" color="textPrimary" href="/SignUpInteriorDesigner" className={classes.link}>
+                          Interior Designer
               </Link>
-          </nav>
+                      </nav>
                     </Typography>
                   </Popover>
                 </CardActions>

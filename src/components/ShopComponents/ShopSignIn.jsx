@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import ResponsiveDrawer from './ResponsiveDrawer';
-
+import { store } from 'react-notifications-component';
 // export const UserContext=React.createContext();
 const ShopSignIn = () => {
     const [credentials, setCredentials] = useState({ shop_name: '', password: '' });
@@ -14,16 +14,59 @@ const ShopSignIn = () => {
     const handleSubmit=(event)=>{
     // alert('name and pass is'+JSON.stringify(credentials));
      event.preventDefault();
+     if (credentials.shop_name === '' || credentials.password ==='' ){
+      store.addNotification({
+        title: "Sign In Failed !",
+        message: "Please fill all the Fields",
+        type: "info",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+    
+    });
+           return ; 
+     }
      
       axios.post(`http://localhost:3000/shops/ShopLogin`, credentials )
         .then(res => {
-          console.log(res);
-          console.log(res.data.id);
+          //console.log(res);
+          //console.log(res.data.id);
           localStorage.setItem('id',res.data.id);
+          store.addNotification({
+            title: "Welcome !",
+            message: "Successfully Sign In ",
+            type: "success",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
           history.push({pathname:'/Shops/'+res.data.id+'/Iron',state:{id:res.data.id}});
           //return(<UserContext.Provider value={res.data.id}/>)
         }).catch(err=>{
-          console.log(err);
+         // console.log(err);
+         store.addNotification({
+          title: "Sign In Failed !",
+          message: "Message "+err.message,
+          type: "danger",
+          insert: "top",
+          container: "bottom-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
         });
    
     }

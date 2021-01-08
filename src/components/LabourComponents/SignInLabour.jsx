@@ -4,20 +4,63 @@ import { useState } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import {useHistory} from 'react-router-dom';
-
+import { store } from 'react-notifications-component';
 const SignInLabour = () => {
     const [credentials, setcredentials] = useState({ username: '', password: '' });
     const history=useHistory();
     const handleSubmit=(event)=>{
      event.preventDefault();
+     if (credentials.username === '' || credentials.password ==='' ){
+      store.addNotification({
+        title: "Sign In Failed !",
+        message: "Please fill all the Fields",
+        type: "info",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+    
+    });
+           return ; 
+     }
       axios.post(`http://localhost:3000/users/login`, credentials )
         .then(res => {
          // console.log(res);
-          console.log(res.data);
+          // console.log(res.data);
+          store.addNotification({
+            title: "Welcome !",
+            message: "Successfully Sign In ",
+            type: "success",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
           localStorage.setItem('id',res.data.id);
           history.push('/labour');
         }).catch(err=>{
-          console.log(err);
+          //console.log(err);
+          store.addNotification({
+            title: "Sign In Failed !",
+            message: "Message "+err.message,
+            type: "danger",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         });
       
     }

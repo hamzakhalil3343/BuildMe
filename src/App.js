@@ -23,17 +23,32 @@ import SignUpInt_D from './components/InteriorDesigners/SignUpInt_D';
 import SignInInt_D from './components/InteriorDesigners/SignInInt_D';
 import IntDesHomeComponent from './components/InteriorDesigners/IntDesHomeComponent';
 import Home from './components/Home/Home';
-
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
 function App() {
   return (
     <div className="App">
+      <ReactNotification />
       <BrowserRouter>
      
       <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} />
                     <Route exact path="/ShopSignUp" component={ShopSignUp} />
+                    <Route exact path="/SignUpContractor" component={SignUpContractor} />
                     <Route exact path="/SignUpInteriorDesigner" component={SignUpInt_D} />
+                    <Route exact path="/SignUpCustomer" component={SignUpCustomers} />
+                    <Route exact path="/SignUpLabour" component={SignUpLabour} />
+
+                    <Route exact path="/ShopSignIn" component={ShopSignIn} />
+                    <Route exact path="/SignInContractor" component={SignInContractor} />
+                    <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} />
+                    <Route exact path="/SignInCustomer" component={SignInCustomers} />
+                    <Route exact path="/SignInLabour" component={SignInLabour} />
+
+
+
+                    <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} />
+                    
 
                     <Route path="/interiorDesigner" component={IntDesHomeComponent} />
                     {/* <Route path="/contractor" component={ContractorHomeComponent} /> */}
