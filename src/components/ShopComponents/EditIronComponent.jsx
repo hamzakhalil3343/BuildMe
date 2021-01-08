@@ -10,7 +10,7 @@ import { red } from '@material-ui/core/colors';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
-
+import { store } from 'react-notifications-component';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,10 +49,36 @@ function EditIronComponent(props) {
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/iron/${props.data._id}`, credentials)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    // console.log(res);
+                    // console.log(res.data);
+                    store.addNotification({
+                      title: "Success !",
+                      message: "Successfully edited ! ",
+                      type: "success",
+                      insert: "top",
+                      container: "bottom-right",
+                      animationIn: ["animate__animated", "animate__fadeIn"],
+                      animationOut: ["animate__animated", "animate__fadeOut"],
+                      dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                      }
+                    });
                 }).catch(err => {
-                    console.log(err);
+                    //console.log(err);
+                    store.addNotification({
+                      title: "Failed !",
+                      message: "Message "+err.message,
+                      type: "danger",
+                      insert: "top",
+                      container: "bottom-right",
+                      animationIn: ["animate__animated", "animate__fadeIn"],
+                      animationOut: ["animate__animated", "animate__fadeOut"],
+                      dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                      }
+                    });
                 });
     
         }
@@ -60,10 +86,36 @@ function EditIronComponent(props) {
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/iron/${props.data._id}`)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    // console.log(res);
+                    // console.log(res.data);
+                    store.addNotification({
+                      title: "Deleted !",
+                      message: "Delete Success ",
+                      type: "success",
+                      insert: "top",
+                      container: "bottom-right",
+                      animationIn: ["animate__animated", "animate__fadeIn"],
+                      animationOut: ["animate__animated", "animate__fadeOut"],
+                      dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                      }
+                    });
+                    window.location.reload();
                 }).catch(err => {
-                    console.log(err);
+                  store.addNotification({
+                    title: "Failed !",
+                    message: "Message "+err.message,
+                    type: "danger",
+                    insert: "top",
+                    container: "bottom-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });
                 });
 
         }

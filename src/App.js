@@ -46,16 +46,16 @@ function App() {
                     <Route exact path="/SignInLabour" component={SignInLabour} />
 
 
-
-                    <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} />
+{/* 
+                    <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} /> */}
                     
 
                     <Route path="/interiorDesigner" component={IntDesHomeComponent} />
-                    {/* <Route path="/contractor" component={ContractorHomeComponent} /> */}
-                    {/* <Route path="/labour" component={LabourHomeComponent} /> */}
+                    <Route path="/contractor" component={ContractorHomeComponent} />
+                    <Route path="/labour" component={LabourHomeComponent} />
 
-                    {/* <Route path="/Shops/:id" component={ResponsiveDrawer} />
- */}
+                    <Route path="/Shops/:id" component={ResponsiveDrawer} />
+
 
                     {/* <Route path="*" component={() => <Redirect to="/" />} /> */}
 

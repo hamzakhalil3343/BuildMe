@@ -46,8 +46,8 @@ const ShopSignUp = () => {
         //console.log(res);
       //  console.log('Your data id is ',res.data);
       store.addNotification({
-        title: "Welcome !",
-        message: "Successfully Sign In ",
+        title: "Success !",
+        message: "Successfully Sign Up ",
         type: "success",
         insert: "top",
         container: "bottom-right",

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import React from 'react';
-
+import { store } from 'react-notifications-component';
 const AddIronComponent = () => {
 
     const [credentials, setCredentials] = useState({ name: '', quantitie: '', iron_type: '', price: '' });
@@ -28,10 +28,36 @@ const AddIronComponent = () => {
         const id = localStorage.getItem('id');
         axios.post(`http://localhost:3000/shops/${id}/iron`, credentials)
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                // console.log(res);
+                // console.log(res.data);
+                store.addNotification({
+                    title: "Success !",
+                    message: "Iron Added Successfully ",
+                    type: "success",
+                    insert: "top",
+                    container: "bottom-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });
             }).catch(err => {
-                console.log(err);
+               // console.log(err);
+               store.addNotification({
+                title: "Failed !",
+                message: "Message "+err.message,
+                type: "danger",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              });
             });
 
     }

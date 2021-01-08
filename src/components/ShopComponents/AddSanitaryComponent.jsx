@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import React from 'react';
-
+import { store } from 'react-notifications-component';
 const AddSanitaryComponent = () => {
 
     const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', sanitary_type: '', price: '' });
@@ -28,11 +28,37 @@ const AddSanitaryComponent = () => {
         const id = localStorage.getItem('id');
         axios.post(`http://localhost:3000/shops/${id}/sanitary`, credentials)
         .then(res => {
-            console.log(res);
-            console.log(res.data);
-            alert('Success !');
+            // console.log(res);
+            // console.log(res.data);
+            // alert('Success !');
+            store.addNotification({
+                title: "Success !",
+                message: "Successfully Added  ",
+                type: "success",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              });
         }).catch(err => {
-            console.log(err);
+           // console.log(err);
+           store.addNotification({
+            title: "Failed !",
+            message: "Message "+err.message,
+            type: "danger",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         });
 
     }

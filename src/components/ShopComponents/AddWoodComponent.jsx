@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import React from 'react';
-
+import { store } from 'react-notifications-component';
 const AddWoodComponent = () => {
 
     const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', wood_type: '', price: '' });
@@ -28,11 +28,38 @@ const AddWoodComponent = () => {
         const id = localStorage.getItem('id');
         axios.post(`http://localhost:3000/shops/${id}/wood`, credentials)
         .then(res => {
-            console.log(res);
-            console.log(res.data);
-            alert('Success !');
+            // console.log(res);
+            // console.log(res.data);
+            // alert('Success !');
+            store.addNotification({
+                title: "Success !",
+                message: "Successfully Added Wood ",
+                type: "success",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              });
+              window.location.reload();
         }).catch(err => {
-            console.log(err);
+           // console.log(err);
+           store.addNotification({
+            title: "Failed !",
+            message: "Message "+err.message,
+            type: "danger",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         });
 
     }

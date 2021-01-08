@@ -10,8 +10,7 @@ import { red } from '@material-ui/core/colors';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
-
-
+import { store } from 'react-notifications-component';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -49,21 +48,70 @@ function EditPaintComponent(props) {
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/paints/${props.data._id}`, credentials)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    // console.log(res);
+                    // console.log(res.data);
+                    store.addNotification({
+                      title: "Success !",
+                      message: "Successfully Edited  ",
+                      type: "success",
+                      insert: "top",
+                      container: "bottom-right",
+                      animationIn: ["animate__animated", "animate__fadeIn"],
+                      animationOut: ["animate__animated", "animate__fadeOut"],
+                      dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                      }
+                    });
                 }).catch(err => {
-                    console.log(err);
-                });
+                  store.addNotification({
+                    title: "Failed !",
+                    message: "Message "+err.message,
+                    type: "danger",
+                    insert: "top",
+                    container: "bottom-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });                });
     
         }
         const handleDelete =()=>{
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/paints/${props.data._id}`)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    // console.log(res);
+                    // console.log(res.data);
+                    store.addNotification({
+                      title: "Delete !",
+                      message: "Successfully Deleted  ",
+                      type: "success",
+                      insert: "top",
+                      container: "bottom-right",
+                      animationIn: ["animate__animated", "animate__fadeIn"],
+                      animationOut: ["animate__animated", "animate__fadeOut"],
+                      dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                      }
+                    });
                 }).catch(err => {
-                    console.log(err);
+                  store.addNotification({
+                    title: "Failed !",
+                    message: "Message "+err.message,
+                    type: "danger",
+                    insert: "top",
+                    container: "bottom-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });
                 });
 
         }
