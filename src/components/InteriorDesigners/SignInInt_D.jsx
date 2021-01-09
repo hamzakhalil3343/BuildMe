@@ -97,7 +97,7 @@ function SignInInt_D(props) {
             <Button variant="contained" type="submit" color="primary" fullWidth >
               Login
 </Button>
-<Button variant="contained" color="primary" fullWidth>
+<Button variant="contained" color="primary" fullWidth onClick={()=>history.push('/')}>
   Cancel
 </Button>
 

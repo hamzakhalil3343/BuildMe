@@ -3,20 +3,47 @@ import { useState ,useEffect} from 'react';
 import {TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
+import { store } from 'react-notifications-component';
+import {useHistory} from 'react-router-dom';
 function AddContract(props) {
     const id = localStorage.getItem('id');
     const [interiorDesigner_id,setinteriorDesignerId]= useState('') ;
     const [credentials, setCredentials] = useState({ name: '', details: '' ,additionalDetails:''});
-
+    const history =useHistory();
     const handleSubmit=(event)=>{
         alert('name and details is'+JSON.stringify(credentials));
         event.preventDefault();
          axios.post( `http://localhost:3000/interiorDesigner/${interiorDesigner_id}/contract`, credentials )
            .then(res => {
-             alert('Success !');
-            
+            // alert('Success !');
+            store.addNotification({
+              title: "Welcome !",
+              message: "Successfully Sign In ",
+              type: "success",
+              insert: "top",
+              container: "bottom-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true
+              }
+            });
            }).catch(err=>{
-             alert(err.message);
+             //alert(err.message);
+             store.addNotification({
+              title: "Failed !",
+              message: err.message,
+              type: "danger",
+              insert: "top",
+              container: "bottom-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true
+              }
+            });
            });
          
        }
@@ -55,7 +82,7 @@ function AddContract(props) {
           const classes = useStyles();
     return (
         <div>
-             <h1>interiorDesigner Contract </h1>
+             <h1>Interior Designer Contract </h1>
              <form className={classes.root} onSubmit={handleSubmit} > 
             <TextField id="standard-basic" name="name" label="Contract Name"
              value={credentials.name}
@@ -79,7 +106,7 @@ function AddContract(props) {
             <Button variant="contained" type="submit" color="primary"  >
               ADD Contract
 </Button>
-<Button variant="contained" color="primary" fullWidth>
+<Button variant="contained" color="primary" fullWidth onClick={()=>history.push('/')}>
   Cancel
 </Button>
 

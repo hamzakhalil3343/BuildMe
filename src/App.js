@@ -46,11 +46,10 @@ function App() {
                     <Route exact path="/SignInLabour" component={SignInLabour} />
 
 
-{/* 
-                    <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} /> */}
                     
 
                     <Route path="/interiorDesigner" component={IntDesHomeComponent} />
+                    <Route path="/customer" component={CustomerHomeComponent} />
                     <Route path="/contractor" component={ContractorHomeComponent} />
                     <Route path="/labour" component={LabourHomeComponent} />
 

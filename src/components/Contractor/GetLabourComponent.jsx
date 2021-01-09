@@ -24,7 +24,7 @@ import axios from 'axios';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
+import { store } from 'react-notifications-component';
 const useStyles1 = makeStyles((theme) => ({
     root: {
         flexShrink: 0,
@@ -168,15 +168,40 @@ function GetLabourComponent(props) {
     const [credentials, setCredentials] = useState({ TeamPart: '', TeamDetails: '' });
     const [lab_id,setLabID]=useState('');
     const handleSubmit=(event)=>{
-        alert('name and pass is'+JSON.stringify(credentials)+lab_id);
+       // alert('name and pass is'+JSON.stringify(credentials)+lab_id);
         event.preventDefault();
         axios.put(`http://localhost:3000/labours/${lab_id}`, credentials)
         .then(res => {
            // window.location.reload(false);
-            alert('successFully saved');
-            console.log(res.data);
+            // alert('successFully saved');
+            // console.log(res.data);
+            store.addNotification({
+                title: "Added !",
+                message: "Successfully Added Labour teams ",
+                type: "success",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+            });
         }).catch(err => {
-            console.log(err);
+            store.addNotification({
+                title: "Failed !",
+                message: "Message "+err.message,
+                type: "danger",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              });
         });
          
        }

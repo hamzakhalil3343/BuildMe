@@ -2,8 +2,10 @@ import React,{useState} from 'react';
 import {Grid,TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 import { store } from 'react-notifications-component';
 function SignUpInt_D(props) {
+   const history = useHistory();
     const [credentials, setCredentials] = useState({ username: '', firstname: '', lastname: '', password: '',user_type:'interiorDesigner' });
   const handleSubmit=(event)=>{
     event.preventDefault();
@@ -41,6 +43,7 @@ function SignUpInt_D(props) {
             onScreen: true
           }
         });
+        history.push('/');
       }).catch(err => {
         store.addNotification({
           title: "Sign Up Failed !",
@@ -99,7 +102,7 @@ function SignUpInt_D(props) {
             <Button variant="contained" type="submit" color="primary">
               Sign Up
 </Button>
-<Button variant="contained" color="primary">
+<Button variant="contained" color="primary" onClick={()=>history.push('/')}>
   Cancel
 </Button>
 

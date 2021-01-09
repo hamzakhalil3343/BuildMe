@@ -3,8 +3,10 @@ import {Grid,TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
+import {useHistory} from 'react-router-dom';
 const SignUpLabour = () => {
   const [credentials, setCredentials] = useState({ username: '', firstname: '', lastname: '', password: '',user_type:'labour' });
+  const history = useHistory();
     const handleSubmit=(event)=>{
       event.preventDefault();
       if (credentials.username === '' || credentials.password ==='' || credentials.lastname === '' || credentials.firstname ==='' ){
@@ -30,7 +32,7 @@ const SignUpLabour = () => {
           //console.log(res);
          // console.log('Your data id is ',res.data);
          store.addNotification({
-          title: "Welcome !",
+          title: "Success !",
           message: "Successfully Sign Up ",
           type: "success",
           insert: "top",
@@ -42,6 +44,7 @@ const SignUpLabour = () => {
             onScreen: true
           }
         });
+        history.push('/');
         }).catch(err => {
           //console.log('an err occured' ,err.message);
           store.addNotification({
@@ -99,7 +102,7 @@ const SignUpLabour = () => {
             <Button variant="contained" type="submit" color="primary">
               Sign Up
 </Button>
-<Button variant="contained" color="primary">
+<Button variant="contained" color="primary" onClick={()=>history.push('/')}>
   Cancel
 </Button>
 
