@@ -1,14 +1,8 @@
 import React from 'react';
-import { Route, Switch,Redirect,BrowserRouter, Router } from "react-router-dom";
-import logo from './logo.svg';
+import { Route, Switch,BrowserRouter } from "react-router-dom";
 import './App.css';
-import SignIn from './components/SignIn';
-import SignUpAdmin from './components/SignUpAdmin';
-
 import SignInLabour from './components/LabourComponents/SignInLabour';
 import SignUpLabour from './components/LabourComponents/SignUpLabour';
-
-import Wecome from './components/Wecome';
 import ResponsiveDrawer from './components/ShopComponents/ResponsiveDrawer';
 import ShopSignUp from './components/ShopComponents/ShopSignUp'
 import ShopSignIn from './components/ShopComponents/ShopSignIn'
@@ -25,6 +19,9 @@ import IntDesHomeComponent from './components/InteriorDesigners/IntDesHomeCompon
 import Home from './components/Home/Home';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
+import SignInAdmin from './components/Admin/SignInAdmin';
+import SignUpAdmin from './components/Admin/SignUpAdmin';
+import AdminHomeComponent from './components/Admin/AdminHomeComponent';
 function App() {
   return (
     <div className="App">
@@ -33,6 +30,9 @@ function App() {
      
       <Switch>
                     <Route exact path="/" component={Home} />
+
+
+                    <Route exact path="/SignInAdmin" component={SignInAdmin} />
                     <Route exact path="/ShopSignUp" component={ShopSignUp} />
                     <Route exact path="/SignUpContractor" component={SignUpContractor} />
                     <Route exact path="/SignUpInteriorDesigner" component={SignUpInt_D} />
@@ -44,15 +44,13 @@ function App() {
                     <Route exact path="/SignInInteriorDesigner" component={SignInInt_D} />
                     <Route exact path="/SignInCustomer" component={SignInCustomers} />
                     <Route exact path="/SignInLabour" component={SignInLabour} />
-
-
-                    
+                    <Route exact path="/SignUpAdmin" component={SignUpAdmin} />
 
                     <Route path="/interiorDesigner" component={IntDesHomeComponent} />
                     <Route path="/customer" component={CustomerHomeComponent} />
                     <Route path="/contractor" component={ContractorHomeComponent} />
                     <Route path="/labour" component={LabourHomeComponent} />
-
+                    <Route path="/Admin" component={AdminHomeComponent} />
                     <Route path="/Shops/:id" component={ResponsiveDrawer} />
 
 
