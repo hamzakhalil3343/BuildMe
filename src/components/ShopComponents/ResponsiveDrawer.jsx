@@ -28,6 +28,7 @@ import ApartmentIcon from '@material-ui/icons/Apartment';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 import SelectAllIcon from '@material-ui/icons/SelectAll';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 //Sub Components
 import IronComponent from './IronComponent';
 import GlassComponent from './GlassComponent';
@@ -35,6 +36,7 @@ import TilesComponent from './TilesComponent';
 import SanitaryComponent from './SanitaryComponent';
 import PaintsComponent from './PaintsComponent';
 import ElectricStoreComponent from './ElectricStoreComponent';
+import RentComponent from './RentComponent';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -224,6 +226,14 @@ function ResponsiveDrawer(props) {
                 </List>
                 <Divider />
                 <List>
+                <Link
+                        style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/rent`); }} >
+                            <ListItemIcon><LocalAtmIcon /></ListItemIcon>
+                            <ListItemText primary="Rent" />
+                        </ListItem>
+                    </Link>
                     
                 </List>
             </Drawer>
@@ -244,6 +254,7 @@ function ResponsiveDrawer(props) {
                     <Route path="/Shops/:id/sanitary" component={SanitaryComponent} />
                     <Route path="/Shops/:id/paint" component={PaintsComponent} />
                     <Route path="/Shops/:id/electricStore" component={ElectricStoreComponent} />
+                    <Route path="/Shops/:id/rent" component={RentComponent} />
 
                    
 
