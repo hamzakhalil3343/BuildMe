@@ -4,6 +4,8 @@ import 'react-credit-cards/es/styles-compiled.css';
 import { TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
+import { store } from 'react-notifications-component';
+import axios from 'axios';
 function RentComponent() {
       
     //   handleInputChange = (e) => {
@@ -16,6 +18,7 @@ function RentComponent() {
       var [focused,setfocused] = useState('');  
       var [name,setname] = useState('');
       var [number,setnumber] = useState('');
+      var [amount,setamount] = useState(0);
       const useStyles = makeStyles((theme) => ({
         root: {
           '& > *': {
@@ -37,7 +40,43 @@ function RentComponent() {
         },
       }));
       const classes = useStyles();
-      const handleSubmit = () => {
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post(`http://localhost:3000/payment`, {"name":name,"cvc":cvc,"exp_date":expiry,"number":number,"amount":amount})
+        .then(res => {
+           // window.location.reload(false);
+            // alert('successFully saved');
+            // console.log(res.data);
+            store.addNotification({
+                title: "Success !",
+                message: "Your Rent is submitted ",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+            });
+        }).catch(err => {
+            store.addNotification({
+                title: "Failed !",
+                message: "Message "+err.message,
+                type: "danger",
+                insert: "top",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+              });
+        });
+         
+
 
       }
         return (
@@ -74,6 +113,10 @@ function RentComponent() {
           <TextField id="outlined-basic" label="Number" variant="outlined"
             value={number} type="number"
             onChange={e => setnumber(e.target.value)}
+          />
+          <TextField id="outlined-basic" label="Amount" variant="outlined"
+            value={amount} type="number"
+            onChange={e => setamount(e.target.value)}
           />
           <Button variant="contained" type="submit" color="primary">
               <CreditCardIcon style={{margin:'5px'}}/>

@@ -26,6 +26,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 import SelectAllIcon from '@material-ui/icons/SelectAll';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 //Sub Components
 import IronComponent from './IronComponent';
 import GlassComponent from './GlassComponent';
@@ -229,6 +230,10 @@ function ResponsiveDrawer() {
                         <ListItem button onClick={() => { history.push(`/Shops/${id}/rent`); }} >
                             <ListItemIcon><LocalAtmIcon /></ListItemIcon>
                             <ListItemText primary="Rent" />
+                        </ListItem>
+                        <ListItem button onClick={() => { localStorage.removeItem('id'); history.push('/'); }} >
+                            <ListItemIcon><ExitToAppIcon /></ListItemIcon>
+                            <ListItemText primary="Sign out" />
                         </ListItem>
                     </Link>
                     
