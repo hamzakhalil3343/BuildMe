@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { Route, Switch, Redirect, BrowserRouter, Router, useHistory, Link } from "react-router-dom";
+import { Route, Switch, useHistory, Link } from "react-router-dom";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -16,9 +16,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import AddIronComponent from './AddIronComponent';
 import WoodComponent from './WoodComponent';
 //Icon Goes Here 
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -96,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 0,
     },
 }));
-function ResponsiveDrawer(props) {
+function ResponsiveDrawer() {
     const classes = useStyles();
     const theme = useTheme();
 
@@ -162,7 +159,7 @@ function ResponsiveDrawer(props) {
                         style={{ color: "inherit", textDecoration: "none" }}
                         
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/iron`); }}>
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/iron`); }}>
                             <ListItemIcon><AddCircleIcon /></ListItemIcon>
                             <ListItemText primary="iron" />
                         </ListItem>
@@ -173,7 +170,7 @@ function ResponsiveDrawer(props) {
 
                        
                     >
-                        <ListItem button  onClick={(e) => { history.push(`/Shops/${id}/wood`); }} >
+                        <ListItem button  onClick={() => { history.push(`/Shops/${id}/wood`); }} >
                             <ListItemIcon><ExtensionIcon /></ListItemIcon>
                             <ListItemText primary="wood" />
                         </ListItem>
@@ -182,7 +179,7 @@ function ResponsiveDrawer(props) {
                         style={{ color: "inherit", textDecoration: "none" }}
                        
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/glass`); }} >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/glass`); }} >
                             <ListItemIcon><ViewHeadlineIcon /></ListItemIcon>
                             <ListItemText primary="Glass" />
                         </ListItem>
@@ -191,7 +188,7 @@ function ResponsiveDrawer(props) {
                         style={{ color: "inherit", textDecoration: "none" }}
                         
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/tile`); }} >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/tile`); }} >
                             <ListItemIcon><ApartmentIcon /></ListItemIcon>
                             <ListItemText primary="Tile" />
                         </ListItem>
@@ -199,7 +196,7 @@ function ResponsiveDrawer(props) {
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/sanitary`); }} >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/sanitary`); }} >
                             <ListItemIcon><ReceiptIcon /></ListItemIcon>
                             <ListItemText primary="Sanitary" />
                         </ListItem>
@@ -208,7 +205,7 @@ function ResponsiveDrawer(props) {
                         style={{ color: "inherit", textDecoration: "none" }}
                        
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/paint`); }} >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/paint`); }} >
                             <ListItemIcon><FormatPaintIcon /></ListItemIcon>
                             <ListItemText primary="Paint" />
                         </ListItem>
@@ -216,7 +213,7 @@ function ResponsiveDrawer(props) {
                     <Link
                         style={{ color: "inherit", textDecoration: "none" }}
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/electricStore`); }} >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/electricStore`); }} >
                             <ListItemIcon><SelectAllIcon /></ListItemIcon>
                             <ListItemText primary="Electric Store" />
                         </ListItem>
@@ -229,7 +226,7 @@ function ResponsiveDrawer(props) {
                 <Link
                         style={{ color: "inherit", textDecoration: "none" }}
                     >
-                        <ListItem button onClick={(e) => { history.push(`/Shops/${id}/rent`); }} >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/rent`); }} >
                             <ListItemIcon><LocalAtmIcon /></ListItemIcon>
                             <ListItemText primary="Rent" />
                         </ListItem>
