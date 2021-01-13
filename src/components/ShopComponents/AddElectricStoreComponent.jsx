@@ -65,10 +65,7 @@ const AddElectricStoreComponent = () => {
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Dimensions" variant="outlined"
-                    value={credentials.dimension}
-                    onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
-                />
+              
                 <TextField id="outlined-basic" label="Quantitie" variant="outlined"
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}

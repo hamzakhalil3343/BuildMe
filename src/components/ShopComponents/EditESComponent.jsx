@@ -42,9 +42,9 @@ function EditESComponent(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, electric_type: props.data.electric_type, price: props.data.price });
-          const handleSubmit = () => {
+          const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
-           
+            event.preventDefault();
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/electricStores/${props.data._id}`, credentials)
                 .then(res => {
@@ -78,7 +78,8 @@ function EditESComponent(props) {
                 });
     
         }
-        const handleDelete =()=>{
+        const handleDelete =(event)=>{
+          event.preventDefault();
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/electricStores/${props.data._id}`)
                 .then(res => {

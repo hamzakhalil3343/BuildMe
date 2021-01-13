@@ -42,9 +42,9 @@ function EditPaintComponent(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, paint_type: props.data.paint_type, price: props.data.price });
-          const handleSubmit = () => {
+          const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
-           
+            event.preventDefault();
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/paints/${props.data._id}`, credentials)
                 .then(res => {
@@ -79,7 +79,8 @@ function EditPaintComponent(props) {
                   });                });
     
         }
-        const handleDelete =()=>{
+        const handleDelete =(event)=>{
+          event.preventDefault();
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/paints/${props.data._id}`)
                 .then(res => {
@@ -134,7 +135,7 @@ function EditPaintComponent(props) {
         />
         <CardMedia
           className={classes.media}
-          image="https://sc02.alicdn.com/kf/HTB1JBz1lb5YBuNjSspoq6zeNFXak.jpg"
+          image="https://images.moneycontrol.com/static-mcnews/2017/04/Paints-e1548221251733-770x433.jpg"
           title="Paella dish"
         />
         <CardContent>
