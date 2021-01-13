@@ -42,14 +42,17 @@ function EditWoodComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
     const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, wood_type: props.data.wood_type, price: props.data.price });
-          const handleSubmit = () => {
-            //alert('name and pass is'+JSON.stringify(credentials));
-           
+          const handleSubmit = (event) => {
+            //alert('name and pass is'+props.data._id);
+            
+            event.preventDefault();
+         //   alert('wsws');
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/wood/${props.data._id}`, credentials)
                 .then(res => {
                     // console.log(res);
                     // console.log(res.data);
+                    alert('success');
                     store.addNotification({
                       title: "Success !",
                       message: "Successfully Edited Wood ",
@@ -80,7 +83,8 @@ function EditWoodComponent(props) {
                 });
     
         }
-        const handleDelete =()=>{
+        const handleDelete =(event)=>{
+          event.preventDefault();
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/wood/${props.data._id}`)
                 .then(res => {
@@ -135,7 +139,7 @@ function EditWoodComponent(props) {
         />
         <CardMedia
           className={classes.media}
-          image="https://sc02.alicdn.com/kf/HTB1JBz1lb5YBuNjSspoq6zeNFXak.jpg"
+          image="https://cdn.vox-cdn.com/thumbor/YuefSykAb4x9hw0nKdBB_LgfHHM=/0x199:3000x1699/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/19586317/salvaged_wood.jpg"
           title="Paella dish"
         />
         <CardContent>

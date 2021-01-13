@@ -42,9 +42,9 @@ function EditSanitaryComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
     const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, sanitary_type : props.data.sanitary_type, price: props.data.price });
-          const handleSubmit = () => {
+          const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
-           
+            event.preventDefault();
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/sanitary/${props.data._id}`, credentials)
                 .then(res => {
@@ -80,7 +80,8 @@ function EditSanitaryComponent(props) {
                 });
     
         }
-        const handleDelete =()=>{
+        const handleDelete =(event)=>{
+          event.preventDefault();
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/sanitary/${props.data._id}`)
                 .then(res => {
@@ -135,7 +136,7 @@ function EditSanitaryComponent(props) {
         />
         <CardMedia
           className={classes.media}
-          image="https://sc01.alicdn.com/kf/Haa3df7d9b8e04049a425738c267abe34h.jpg"
+          image="https://thumbs.dreamstime.com/b/luxury-bathroom-sanitary-ware-warm-light-187727582.jpg"
           title="Paella dish"
         />
         <CardContent>

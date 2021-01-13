@@ -16,10 +16,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-
-
 import axios from 'axios';
-
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -179,8 +176,8 @@ function GetIronComponent() {
                     <StyledTableCell  align="center">ID</StyledTableCell>
                     <StyledTableCell align="center">Name</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
+                    <StyledTableCell align="center">Type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
-                    <StyledTableCell align="center">type</StyledTableCell>
                    
                   </TableRow>
                 </TableHead>

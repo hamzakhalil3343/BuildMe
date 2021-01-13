@@ -42,8 +42,10 @@ function EditGlassComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
     const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, glass_type: props.data.glass_type, price: props.data.price });
-          const handleSubmit = () => {
+          const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
+            event.preventDefault();
+
            
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/glass/${props.data._id}`, credentials)
@@ -81,7 +83,8 @@ function EditGlassComponent(props) {
                 });
     
         }
-        const handleDelete =()=>{
+        const handleDelete =(event)=>{
+          event.preventDefault();
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/glass/${props.data._id}`)
                 .then(res => {

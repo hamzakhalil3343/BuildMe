@@ -180,8 +180,8 @@ function GetWoodComponent(props) {
                     <StyledTableCell align="center">Name</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
                     <StyledTableCell align="center">Dimensions</StyledTableCell>
+                    <StyledTableCell align="center">Type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
-                    <StyledTableCell align="center">type</StyledTableCell>
                    
                   </TableRow>
                 </TableHead>
