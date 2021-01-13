@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddIronComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '', quantitie: '', iron_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '', quantitie: '', iron_type: '', price: '',percentage_material:'',used_in:'' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -64,7 +64,7 @@ const AddIronComponent = () => {
     return (
         <div>
             <form className={classes.root} onSubmit={handleSubmit}>
-                <TextField id="outlined-basic" label="Name" variant="outlined"
+                <TextField id="outlined-basic" label="Name" variant="outlined" placeholder="It can  be mild steel bars,Deformed steel bars and others..."
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
@@ -76,12 +76,20 @@ const AddIronComponent = () => {
                     value={credentials.iron_type}
                     onChange={e => setCredentials({ ...credentials, iron_type: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Price"  variant="outlined"
+                <TextField id="outlined-basic" label="Price"  variant="outlined" type="number"
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
                 />
+                 <TextField id="outlined-basic" label="Percentage Carbon and other" variant="outlined" placeholder="Low carbon is preferable in building Houses"
+                    value={credentials.percentage_material}
+                    onChange={e => setCredentials({ ...credentials, percentage_material: e.target.value })}
+                />
+                 <TextField id="outlined-basic" label="Use" variant="outlined" placeholder="Where Do you used it ?"
+                    value={credentials.used_in}   multiline
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
+                />
    
-                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,backgroundColor:'#ac5353' }}>
+                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10 }}>
                     <b>Add Iron</b>
                 </Button>
               

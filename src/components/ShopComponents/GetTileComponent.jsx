@@ -178,8 +178,10 @@ function GetTileComponent(props) {
                   <TableRow>
                     <StyledTableCell  align="center">ID</StyledTableCell>
                     <StyledTableCell align="center">Name</StyledTableCell>
+                    <StyledTableCell align="center">Pattern</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
                     <StyledTableCell align="center">Dimensions</StyledTableCell>
+                    <StyledTableCell align="center">Use</StyledTableCell>
                     <StyledTableCell align="center">type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
                    
@@ -204,10 +206,16 @@ function GetTileComponent(props) {
                  {row.name}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
+                 {row.pattern_name}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
                  {row.quantitie}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.dimension}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.used_in}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.tile_type}

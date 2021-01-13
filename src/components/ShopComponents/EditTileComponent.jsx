@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function EditTileComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, tile_type: props.data.tile_type, price: props.data.price });
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, tile_type: props.data.tile_type, price: props.data.price,pattern_name:props.data.pattern_name,used_in:props.data.used_in });
           const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
             event.preventDefault();
@@ -146,6 +146,10 @@ function EditTileComponent(props) {
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Pattern Name" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.pattern_name}
+                    onChange={e => setCredentials({ ...credentials, pattern_name: e.target.value })}
+                />
                 <TextField id="outlined-basic" label="Quantitie" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
@@ -153,6 +157,10 @@ function EditTileComponent(props) {
                 <TextField id="outlined-basic" label="Dimension" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.dimension}
                     onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.tile_type}

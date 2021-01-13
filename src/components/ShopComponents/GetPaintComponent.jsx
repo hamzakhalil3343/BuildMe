@@ -179,7 +179,7 @@ function GetPaintComponent(props) {
                     <StyledTableCell  align="center">ID</StyledTableCell>
                     <StyledTableCell align="center">Name</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
-                    
+                    <StyledTableCell align="center">Color</StyledTableCell>                    
                     <StyledTableCell align="center">type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
                    
@@ -205,6 +205,9 @@ function GetPaintComponent(props) {
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.quantitie}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.color}
                </TableCell>
               
                <TableCell style={{ width: 160 }} align="center">

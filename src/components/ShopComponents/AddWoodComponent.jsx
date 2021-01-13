@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddWoodComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', wood_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', wood_type: '', price: '' ,used_in:''});
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -66,11 +66,11 @@ const AddWoodComponent = () => {
     return (
         <div>
             <form className={classes.root} onSubmit={handleSubmit}>
-                <TextField id="outlined-basic" label="Name" variant="outlined"
+                <TextField id="outlined-basic" label="Name" variant="outlined" placeholder="Pine ,Charry ,Bomboo and other"
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Dimensions" variant="outlined"
+                <TextField id="outlined-basic" label="Dimensions" variant="outlined" placeholder="Place your size here"
                     value={credentials.dimension}
                     onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
                 />
@@ -82,9 +82,13 @@ const AddWoodComponent = () => {
                     value={credentials.wood_type}
                     onChange={e => setCredentials({ ...credentials, wood_type: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Price"  variant="outlined"
+                <TextField id="outlined-basic" label="Price"  variant="outlined" type="number"
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use"  variant="outlined"  placeholder="Where Do you use it ?"
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
                 />
    
                 <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10 }}>

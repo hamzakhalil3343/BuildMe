@@ -178,6 +178,8 @@ function GetIronComponent() {
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
                     <StyledTableCell align="center">Type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
+                    <StyledTableCell align="center">Percentage Material</StyledTableCell>
+                    <StyledTableCell align="center">Use</StyledTableCell>
                    
                   </TableRow>
                 </TableHead>
@@ -207,6 +209,12 @@ function GetIronComponent() {
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.price}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.percentage_material}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.used_in}
                </TableCell>
             
              </TableRow>

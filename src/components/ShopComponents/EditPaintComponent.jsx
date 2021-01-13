@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function EditPaintComponent(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, paint_type: props.data.paint_type, price: props.data.price });
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,color:props.data.color, paint_type: props.data.paint_type, price: props.data.price });
           const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
             event.preventDefault();
@@ -147,6 +147,10 @@ function EditPaintComponent(props) {
                 <TextField id="outlined-basic" label="Quantitie" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.color}
+                    onChange={e => setCredentials({ ...credentials, color: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.paint_type}

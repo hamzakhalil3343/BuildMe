@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function EditGlassComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, glass_type: props.data.glass_type, price: props.data.price });
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, glass_type: props.data.glass_type, price: props.data.price,used_in:props.data.used_in,u_value:props.data.used_in });
           const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
             event.preventDefault();
@@ -160,6 +160,14 @@ function EditGlassComponent(props) {
                 <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.glass_type}
                     onChange={e => setCredentials({ ...credentials, glass_type: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="U value" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.u_value}
+                    onChange={e => setCredentials({ ...credentials, u_value: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Price"  variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.price}

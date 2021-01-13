@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
-
+import dateFormat from 'dateformat';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
 function EditIronComponent(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, iron_type: props.data.iron_type, price: props.data.price });
-          const handleSubmit = () => {
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, iron_type: props.data.iron_type, price: props.data.price,percentage_material:props.data.percentage_material,used_in:props.data.used_in });
+          const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
-           
+           event.preventDefault();
             const id = localStorage.getItem('id');
             axios.put(`http://localhost:3000/shops/${id}/iron/${props.data._id}`, credentials)
                 .then(res => {
@@ -82,7 +82,8 @@ function EditIronComponent(props) {
                 });
     
         }
-        const handleDelete =()=>{
+        const handleDelete =(event)=>{
+          event.preventDefault();
             const id = localStorage.getItem('id');
             axios.delete(`http://localhost:3000/shops/${id}/iron/${props.data._id}`)
                 .then(res => {
@@ -134,7 +135,7 @@ function EditIronComponent(props) {
             </IconButton>
           }
           title={props.data.name}
-          subheader="September 14, 2016"
+          subheader={dateFormat(props.data.updatedAt, "mmmm dS, yyyy")}
         />
         <CardMedia
           className={classes.media}
@@ -159,8 +160,16 @@ function EditIronComponent(props) {
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Percentage Material"  variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.percentage_material}
+                    onChange={e => setCredentials({ ...credentials, percentage_material: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use"  variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
+                />
    
-                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,margin:8,backgroundColor:'#ac5353' }}>
+                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,margin:8 }}>
                     <b>Update </b>
                 </Button>
               

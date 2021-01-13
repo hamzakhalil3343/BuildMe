@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddSanitaryComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', sanitary_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',details:'', quantitie: '', sanitary_type: '', price: '' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -65,13 +65,13 @@ const AddSanitaryComponent = () => {
     return (
         <div>
             <form className={classes.root} onSubmit={handleSubmit}>
-                <TextField id="outlined-basic" label="Name" variant="outlined"
+                <TextField id="outlined-basic" label="Name" variant="outlined" placeholder="Enter name of sanitary material"
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Dimensions" variant="outlined"
-                    value={credentials.dimension}
-                    onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
+                <TextField id="outlined-basic" label="Details" variant="outlined" placeholder="Enter some information about your material"
+                    value={credentials.details}
+                    onChange={e => setCredentials({ ...credentials, details: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Quantitie" variant="outlined"
                     value={credentials.quantitie}

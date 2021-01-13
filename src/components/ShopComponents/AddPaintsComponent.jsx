@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddPaintsComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', paint_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', paint_type: '', price: '',color:'' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -72,6 +72,10 @@ const AddPaintsComponent = () => {
                 <TextField id="outlined-basic" label="Quantitie" variant="outlined"
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Color" variant="outlined"
+                    value={credentials.color}
+                    onChange={e => setCredentials({ ...credentials, color: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Type" variant="outlined"
                     value={credentials.paint_type}

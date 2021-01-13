@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddTilesComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', tile_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', tile_type: '', price: '',used_in:'',pattern_name:'' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -64,9 +64,13 @@ const AddTilesComponent = () => {
     return (
         <div>
             <form className={classes.root} onSubmit={handleSubmit}>
-                <TextField id="outlined-basic" label="Name" variant="outlined"
+                <TextField id="outlined-basic" label="Name" variant="outlined" placeholder="Marble Tile ,Cement Tile, Limestone Tile etc"
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
+                />
+                 <TextField id="outlined-basic" label="Pattern Name" variant="outlined" placeholder="Centric square ,Herringbone pattern and others"
+                    value={credentials.pattern_name}
+                    onChange={e => setCredentials({ ...credentials, pattern_name: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Dimensions" variant="outlined"
                     value={credentials.dimension}
@@ -79,6 +83,11 @@ const AddTilesComponent = () => {
                 <TextField id="outlined-basic" label="Type" variant="outlined"
                     value={credentials.tile_type}
                     onChange={e => setCredentials({ ...credentials, tile_type: e.target.value })}
+                />
+               
+                <TextField id="outlined-basic" label="Use" variant="outlined"
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Price"  variant="outlined"
                     value={credentials.price}

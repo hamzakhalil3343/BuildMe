@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddGlassComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', glass_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', glass_type: '', price: '',u_value:'',used_in:'' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -65,11 +65,11 @@ const AddGlassComponent = () => {
     return (
         <div>
             <form className={classes.root} onSubmit={handleSubmit}>
-                <TextField id="outlined-basic" label="Name" variant="outlined"
+                <TextField id="outlined-basic" label="Name" variant="outlined" placeholder="Float glass ,Shatterproof glass,Chromatic glass and others"
                     value={credentials.name}
                     onChange={e => setCredentials({ ...credentials, name: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Dimensions" variant="outlined"
+                <TextField id="outlined-basic" label="Dimensions" variant="outlined" placeholder="Preferably Set out width and height "
                     value={credentials.dimension}
                     onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
                 />
@@ -81,9 +81,17 @@ const AddGlassComponent = () => {
                     value={credentials.glass_type}
                     onChange={e => setCredentials({ ...credentials, glass_type: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Price"  variant="outlined"
+                <TextField id="outlined-basic" label="Price"  variant="outlined" type="number"
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Insulation Support or U value"  variant="outlined" placeholder="If a glass is said to be insulated unit then it should have lower u value."
+                    value={credentials.u_value}
+                    onChange={e => setCredentials({ ...credentials, u_value: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use"  variant="outlined" placeholder="How can u use it ?"
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
                 />
    
                 <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10 }}>

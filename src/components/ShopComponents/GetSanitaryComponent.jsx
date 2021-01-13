@@ -178,8 +178,8 @@ function GetSanitaryComponent(props) {
                   <TableRow>
                     <StyledTableCell  align="center">ID</StyledTableCell>
                     <StyledTableCell align="center">Name</StyledTableCell>
+                    <StyledTableCell align="center">Details</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
-                    <StyledTableCell align="center">Dimensions</StyledTableCell>
                     <StyledTableCell align="center">type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
                    
@@ -204,11 +204,12 @@ function GetSanitaryComponent(props) {
                  {row.name}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
-                 {row.quantitie}
+                 {row.details}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
-                 {row.dimension}
+                 {row.quantitie}
                </TableCell>
+              
                <TableCell style={{ width: 160 }} align="center">
                  {row.sanitary_type}
                </TableCell>

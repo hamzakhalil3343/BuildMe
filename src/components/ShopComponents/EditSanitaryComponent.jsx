@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function EditSanitaryComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, sanitary_type : props.data.sanitary_type, price: props.data.price });
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,details: props.data.details, sanitary_type : props.data.sanitary_type, price: props.data.price });
           const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
             event.preventDefault();
@@ -149,9 +149,9 @@ function EditSanitaryComponent(props) {
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Dimension" variant="outlined" style={{margin:10}} fullWidth
-                    value={credentials.dimension}
-                    onChange={e => setCredentials({ ...credentials, dimension: e.target.value })}
+                <TextField id="outlined-basic" label="Details" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.details}
+                    onChange={e => setCredentials({ ...credentials, details: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.sanitary_type

@@ -182,6 +182,7 @@ function GetWoodComponent(props) {
                     <StyledTableCell align="center">Dimensions</StyledTableCell>
                     <StyledTableCell align="center">Type</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
+                    <StyledTableCell align="center">Use </StyledTableCell>
                    
                   </TableRow>
                 </TableHead>
@@ -214,6 +215,9 @@ function GetWoodComponent(props) {
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.price}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.used_in}
                </TableCell>
             
              </TableRow>

@@ -180,7 +180,9 @@ function GetGlassComponent(props) {
                     <StyledTableCell align="center">Name</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
                     <StyledTableCell align="center">Dimensions</StyledTableCell>
-                    <StyledTableCell align="center">type</StyledTableCell>
+                    <StyledTableCell align="center">Type</StyledTableCell>
+                    <StyledTableCell align="center">U value</StyledTableCell>
+                    <StyledTableCell align="center">Use</StyledTableCell>
                     <StyledTableCell align="center">Price</StyledTableCell>
                    
                   </TableRow>
@@ -211,6 +213,12 @@ function GetGlassComponent(props) {
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.glass_type}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.u_value}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.used_in}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.price}

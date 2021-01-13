@@ -11,6 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
+import dateFormat from 'dateformat';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -41,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
 function EditWoodComponent(props) {
     const classes = useStyles();
     const [] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, wood_type: props.data.wood_type, price: props.data.price });
+  
+   
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,dimension: props.data.dimension, wood_type: props.data.wood_type, price: props.data.price ,used_in:props.data.used_in});
           const handleSubmit = (event) => {
             //alert('name and pass is'+props.data._id);
             
@@ -135,7 +138,7 @@ function EditWoodComponent(props) {
             </IconButton>
           }
           title={props.data.name}
-          subheader="September 14, 2016"
+          subheader={dateFormat(props.data.updatedAt, "mmmm dS, yyyy")}
         />
         <CardMedia
           className={classes.media}
@@ -164,8 +167,12 @@ function EditWoodComponent(props) {
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Use"  variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
+                />
    
-                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,margin:8,backgroundColor:'#ac5353' }}>
+                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,margin:8 }}>
                     <b>Update </b>
                 </Button>
               

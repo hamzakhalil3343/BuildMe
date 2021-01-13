@@ -443,9 +443,7 @@ const handleSubmit=(event)=>{
       <Link href="#" variant="subtitle1" color="textSecondary" onClick={()=>setOpenM(true)}>
         Give Reviews
                 </Link>
-                <Link href="#" variant="subtitle1" color="textSecondary" onClick={()=>{localStorage.removeItem('id');history.push('/');}}>
-        Give Reviews
-                </Link>
+              
 
     </Grid>
     <Box mt={5}>
