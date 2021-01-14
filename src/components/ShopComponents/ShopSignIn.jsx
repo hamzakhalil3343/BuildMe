@@ -56,8 +56,25 @@ const ShopSignIn = () => {
       axios.post(`http://localhost:3000/shops/ShopLogin`, credentials )
         .then(res => {
           //console.log(res);
-          //console.log(res.data.id);
+         // alert(res.data.rating);
           localStorage.setItem('id',res.data.id);
+          if(res.data.isAuthenticated === false){
+            store.addNotification({
+              title: "Authentication Failed!",
+              message: "You are not authenticated to sign in ",
+              type: "danger",
+              insert: "top",
+              container: "bottom-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true
+              }
+            });
+            return;
+
+          }
           store.addNotification({
             title: "Welcome !",
             message: "Successfully Sign In ",
