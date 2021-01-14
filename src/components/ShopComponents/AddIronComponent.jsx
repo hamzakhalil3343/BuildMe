@@ -84,7 +84,7 @@ const AddIronComponent = () => {
                     value={credentials.percentage_material}
                     onChange={e => setCredentials({ ...credentials, percentage_material: e.target.value })}
                 />
-                 <TextField id="outlined-basic" label="Use" variant="outlined" placeholder="Where Do you used it ?"
+                 <TextField id="outlined-basic" label="Use" variant="outlined" placeholder="Where Do you use it ?"
                     value={credentials.used_in}   multiline
                     onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
                 />

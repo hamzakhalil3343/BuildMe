@@ -6,7 +6,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 const AddElectricStoreComponent = () => {
 
-    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '', electric_type: '', price: '' });
+    const [credentials, setCredentials] = useState({ name: '',dimension:'', quantitie: '',material_details:'',used_in:'', electric_type: '', price: '' });
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -70,11 +70,19 @@ const AddElectricStoreComponent = () => {
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Material Details" variant="outlined" placeholder="Resistivity ,Conductivity or Other details ..."
+                    value={credentials.material_details}
+                    onChange={e => setCredentials({ ...credentials, material_details: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use" variant="outlined"    placeholder="Breifly Explain where do someOne use it ..."
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
+                />
                 <TextField id="outlined-basic" label="Type" variant="outlined"
                     value={credentials.electric_type}
                     onChange={e => setCredentials({ ...credentials, electric_type: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Price"  variant="outlined"
+                <TextField id="outlined-basic" label="Price"  variant="outlined" type="number"
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
                 />

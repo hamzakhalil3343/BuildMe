@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function EditESComponent(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie, electric_type: props.data.electric_type, price: props.data.price });
+    const [credentials, setCredentials] = useState({ name: props.data.name, quantitie: props.data.quantitie,material_details:props.data.material_details,used_in:props.data.used_in, electric_type: props.data.electric_type, price: props.data.price });
           const handleSubmit = (event) => {
             //alert('name and pass is'+JSON.stringify(credentials));
             event.preventDefault();
@@ -145,11 +145,19 @@ function EditESComponent(props) {
                     value={credentials.quantitie}
                     onChange={e => setCredentials({ ...credentials, quantitie: e.target.value })}
                 />
+                <TextField id="outlined-basic" label="Material Details" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.material_details}
+                    onChange={e => setCredentials({ ...credentials, material_details: e.target.value })}
+                />
+                <TextField id="outlined-basic" label="Use" variant="outlined" style={{margin:10}} fullWidth
+                    value={credentials.used_in}
+                    onChange={e => setCredentials({ ...credentials, used_in: e.target.value })}
+                />
                 <TextField id="outlined-basic" label="Type" variant="outlined" style={{margin:10}} fullWidth
                     value={credentials.electric_type}
                     onChange={e => setCredentials({ ...credentials, electric_type: e.target.value })}
                 />
-                <TextField id="outlined-basic" label="Price"  variant="outlined" style={{margin:10}} fullWidth
+                <TextField id="outlined-basic" label="Price"  variant="outlined" style={{margin:10}} fullWidth type="number"
                     value={credentials.price}
                     onChange={e => setCredentials({ ...credentials, price: e.target.value })}
                 />

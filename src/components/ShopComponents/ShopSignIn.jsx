@@ -1,13 +1,35 @@
 import React from 'react';
-import {Grid,TextField,Button} from '@material-ui/core';
+import {Grid,TextField,Button,Input} from '@material-ui/core';
 import { useState } from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import { store } from 'react-notifications-component';
+
+import IconButton from '@material-ui/core/IconButton';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import clsx from 'clsx';
 // export const UserContext=React.createContext();
 const ShopSignIn = () => {
     const [credentials, setCredentials] = useState({ shop_name: '', password: '' });
     const history=useHistory();
+    const [values, setValues] = React.useState({
+      showPassword: false,
+    });
+
+
+     
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
  
 
     const handleSubmit=(event)=>{
@@ -80,10 +102,30 @@ const ShopSignIn = () => {
 				    onChange={e => setCredentials({...credentials,shop_name:e.target.value})}/>
            
             
-            <TextField id="standard-basic" label="Password" fullWidth style={{marginBottom:'20px',marginTop:'5px'}}
+            {/* <TextField id="standard-basic" label="Password" fullWidth style={{marginBottom:'20px',marginTop:'5px'}}
             value={credentials.password}
             onChange={e => setCredentials({ ...credentials, password: e.target.value })}
-            />
+            /> */}
+              <FormControl fullWidth >
+          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+          <Input
+            id="standard-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={credentials.password}
+            onChange={e => setCredentials({ ...credentials, password: e.target.value })}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
             <br/>
             <Button variant="contained" type="submit" color="primary"  style={{marginTop:'30px',margin:'10px',width:'92%'}}>
               Login

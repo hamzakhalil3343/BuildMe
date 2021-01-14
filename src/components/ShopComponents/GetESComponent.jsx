@@ -179,8 +179,10 @@ function GetESComponent(props) {
                     <StyledTableCell  align="center">ID</StyledTableCell>
                     <StyledTableCell align="center">Name</StyledTableCell>
                     <StyledTableCell align="center">Quantitie</StyledTableCell>
-                    <StyledTableCell align="center">Price</StyledTableCell>
+                    <StyledTableCell align="center">Material Details</StyledTableCell>
+                    <StyledTableCell align="center">Use</StyledTableCell>
                     <StyledTableCell align="center">type</StyledTableCell>
+                    <StyledTableCell align="center">Price</StyledTableCell>
                    
                   </TableRow>
                 </TableHead>
@@ -204,6 +206,12 @@ function GetESComponent(props) {
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.quantitie}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.material_details}
+               </TableCell>
+               <TableCell style={{ width: 160 }} align="center">
+                 {row.used_in}
                </TableCell>
                <TableCell style={{ width: 160 }} align="center">
                  {row.electric_type}
