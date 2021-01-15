@@ -6,13 +6,11 @@ import {useHistory} from 'react-router-dom';
 import { store } from 'react-notifications-component';
 
 import IconButton from '@material-ui/core/IconButton';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import clsx from 'clsx';
 // export const UserContext=React.createContext();
 const ShopSignIn = () => {
     const [credentials, setCredentials] = useState({ shop_name: '', password: '' });

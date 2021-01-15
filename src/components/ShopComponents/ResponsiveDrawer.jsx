@@ -27,6 +27,7 @@ import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 import SelectAllIcon from '@material-ui/icons/SelectAll';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SearchIcon from '@material-ui/icons/Search';
 //Sub Components
 import IronComponent from './IronComponent';
 import GlassComponent from './GlassComponent';
@@ -35,6 +36,7 @@ import SanitaryComponent from './SanitaryComponent';
 import PaintsComponent from './PaintsComponent';
 import ElectricStoreComponent from './ElectricStoreComponent';
 import RentComponent from './RentComponent';
+import SearchComponent from './SearchComponent';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -227,6 +229,10 @@ function ResponsiveDrawer() {
                 <Link
                         style={{ color: "inherit", textDecoration: "none" }}
                     >
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/search`); }} >
+                            <ListItemIcon><SearchIcon /></ListItemIcon>
+                            <ListItemText primary="Search" />
+                        </ListItem>
                         <ListItem button onClick={() => { history.push(`/Shops/${id}/rent`); }} >
                             <ListItemIcon><LocalAtmIcon /></ListItemIcon>
                             <ListItemText primary="Rent" />
@@ -257,6 +263,7 @@ function ResponsiveDrawer() {
                     <Route path="/Shops/:id/paint" component={PaintsComponent} />
                     <Route path="/Shops/:id/electricStore" component={ElectricStoreComponent} />
                     <Route path="/Shops/:id/rent" component={RentComponent} />
+                    <Route path="/Shops/:id/search" component={SearchComponent} />
 
                    
 
