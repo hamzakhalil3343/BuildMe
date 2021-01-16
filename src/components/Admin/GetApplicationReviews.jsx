@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-import AcceptContract from './AcceptContract';
+import ReviewsCard from './ReviewsCard';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -17,14 +18,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection:'row'
   },
 }));
-function FetchContracts() {
+function GetApplicationReviews(props) {
     const classes = useStyles();
     const [data,setData]=useState([]);
   
+    const id = localStorage.getItem('id');
     useEffect(() => {
          const fetchData = async () => {
             const result = await axios(
-              `http://localhost:3000/customers`,
+              `http://localhost:3000/reviews`,
             );
        
             setData(result.data);
@@ -41,7 +43,7 @@ function FetchContracts() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
               {data.map((row)=>(
-                   <AcceptContract data={row} />
+                   <ReviewsCard data={row} />
               )
                 
               )}
@@ -51,6 +53,7 @@ function FetchContracts() {
         </Grid>
        
     );
+
 }
 
-export default FetchContracts;
+export default GetApplicationReviews;

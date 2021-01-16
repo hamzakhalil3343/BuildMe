@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AuthenticateShopsComponent from './AuthenticateShopsComponent';
 import AuthenticateContractorComponent from './AuthenticateContractorComponent';
+import GetPaymentDetails from './GetPaymentDetails';
+import GetApplicationReviews from './GetApplicationReviews';
 
 
 
@@ -64,7 +66,8 @@ function HomeTab(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Shops" {...a11yProps(0)} />
           <Tab label="Contractors " {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="View Rent Record" {...a11yProps(2)} />
+          <Tab label="Reviews " {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -74,7 +77,10 @@ function HomeTab(props) {
        <AuthenticateContractorComponent/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+       <GetPaymentDetails/>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+      <GetApplicationReviews/>
       </TabPanel>
     </div>
   );

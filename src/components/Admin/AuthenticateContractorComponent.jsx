@@ -272,7 +272,7 @@ function AuthenticateContractorComponent(props) {
                                         {row.profile_name}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="center">
-                                        {row.labourTeam[0].project_name !==""?"Exists":"Not Exists"}
+                                        {/* {row.labourTeam[0].project_name !==""?"Exists":"Not Exists"} */}
                                     </TableCell>
                                    
                                    

@@ -201,6 +201,43 @@ const AuthenticateShopsComponent = () => {
     });
      
    }
+   const disable_function=(id)=>{
+
+    axios.put(`http://localhost:3000/shops/${id}`, {"isAuthenticated":false})
+    .then(() => {
+       // window.location.reload(false);
+        // alert('successFully saved');
+        // console.log(res.data);
+        store.addNotification({
+            title: "Success !",
+            message: "Shop is disabled Now !",
+            type: "success",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+        });
+    }).catch(err => {
+        store.addNotification({
+            title: "Failed !",
+            message: "Message "+err.message,
+            type: "danger",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
+    });
+     
+   }
    const DeleteShop=(id)=>{
 
     axios.delete(`http://localhost:3000/shops/${id}`)
@@ -256,6 +293,8 @@ const AuthenticateShopsComponent = () => {
                                 <StyledTableCell align="center">Honour First Name</StyledTableCell>
                                 <StyledTableCell align="center">Honour Last Name</StyledTableCell>
                                 <StyledTableCell align="center">Rating</StyledTableCell>
+                                <StyledTableCell align="center">Status</StyledTableCell>
+                                <StyledTableCell align="center"> </StyledTableCell>
                                 <StyledTableCell align="center"> </StyledTableCell>
                                 <StyledTableCell align="center"> </StyledTableCell>
 
@@ -267,7 +306,7 @@ const AuthenticateShopsComponent = () => {
                                 ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 : data
                             ).map((row) => (
-                                row.isAuthenticated==false?
+                                
                                 <TableRow key={row.name}>
                                      <TableCell style={{ width: 160 }} align="center">
                                         {row._id}
@@ -285,6 +324,9 @@ const AuthenticateShopsComponent = () => {
                                     <TableCell style={{ width: 160 }} align="center">
                                         {row.rating}
                                     </TableCell>
+                                    <TableCell style={{ width: 160 }} align="center">
+                                        {row.isAuthenticated==true?<b>Authenticated</b>:<b> Not Authenticated</b>}
+                                    </TableCell>
                                    
                                    
                                     <TableCell style={{ width: 60 }} align="center">
@@ -296,6 +338,17 @@ const AuthenticateShopsComponent = () => {
                                             onClick={()=>AuthentiacteFunc(row._id)}
                                         >
                                             Authenticate
+                                     </Button>
+                                    </TableCell>
+                                    <TableCell style={{ width: 60 }} align="center">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            className={classes.button}
+                                            startIcon={<QueuePlayNextIcon />}
+                                            onClick={()=>disable_function(row._id)}
+                                        >
+                                            Disable
                                      </Button>
                                     </TableCell>
                                     <TableCell style={{ width: 100 }} align="center">
@@ -310,7 +363,7 @@ const AuthenticateShopsComponent = () => {
                                      </Button>
                                     </TableCell>
 
-                                </TableRow>:''
+                                </TableRow>
                                    
                                 
 
