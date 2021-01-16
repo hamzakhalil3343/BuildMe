@@ -74,7 +74,7 @@ function AcceptContract(props) {
               <div style={{textAlign:'left'}}>
                <p><b>Name :</b> {row.name}</p>
                <p> <b>Details :</b> {row.details}</p>
-              <RemarksComponent/>
+              <RemarksComponent contractID={row._id} customerID={props.data._id}/>
               </div>
                  
               )
