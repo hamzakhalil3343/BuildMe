@@ -3,11 +3,30 @@ import {Grid,TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
+import IconButton from '@material-ui/core/IconButton';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import clsx from 'clsx';
 const SignUpContractor = () => {
-  const [credentials, setCredentials] = useState({ username: '', firstname: '', lastname: '', password: '',user_type:'contractor' });
+  const [credentials, setCredentials] = useState({ username: '', firstname: '', lastname: '', password: '',user_type:'contractor',phone_no:'' });
+
+  const [values, setValues] = React.useState({
+    showPassword: false,
+  });
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   const handleSubmit=(event)=>{
     event.preventDefault();
-    if (credentials.username === '' || credentials.password ==='' || credentials.lastname === '' || credentials.firstname ==='' ){
+    if (credentials.username === '' || credentials.password ==='' || credentials.lastname === '' || credentials.firstname ===''|| credentials.phone_no ==='' ){
       store.addNotification({
         title: "Sign Up Failed !",
         message: "Please fill all the Fields",
@@ -24,37 +43,72 @@ const SignUpContractor = () => {
     });
            return ; 
      }
+     if (credentials.password.length < 6 ){
+      store.addNotification({
+        title: "Sign Up Failed !",
+        message: "Password must be atleast 6 Characters Long",
+        type: "info",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+    
+    });
+           return ; 
+     }
+     if (credentials.phone_no.length < 11 ){
+      store.addNotification({
+        title: "Sign Up Failed !",
+        message: "Invalid Phone Number",
+        type: "info",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+    
+    });
+           return ; 
+     }
     axios.post(`http://localhost:3000/users/signup`,credentials)
       .then(res => {
         //console.log(res);
-        // alert('Your data id is ',res.data);
-        store.addNotification({
-          title: "Welcome !",
-          message: "Successfully Sign Up ",
-          type: "success",
-          insert: "top",
-          container: "bottom-right",
-          animationIn: ["animate__animated", "animate__fadeIn"],
-          animationOut: ["animate__animated", "animate__fadeOut"],
-          dismiss: {
-            duration: 5000,
-            onScreen: true
-          }
-        });
+      //  alert('Your data id is ',res.data);
+      store.addNotification({
+        title: "Welcome !",
+        message: "Successfully Sign Up ",
+        type: "success",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
       }).catch(err => {
-        store.addNotification({
-          title: "Sign Up Failed !",
-          message: "Message "+err.message,
-          type: "danger",
-          insert: "top",
-          container: "bottom-right",
-          animationIn: ["animate__animated", "animate__fadeIn"],
-          animationOut: ["animate__animated", "animate__fadeOut"],
-          dismiss: {
-            duration: 5000,
-            onScreen: true
-          }
-        });
+       // console.log('an err occured' ,err.message);
+       store.addNotification({
+        title: "Sign Up Failed !",
+        message: "Message "+err.message,
+        type: "danger",
+        insert: "top",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
       });
   }
     const useStyles = makeStyles((theme) => ({
@@ -74,10 +128,10 @@ const SignUpContractor = () => {
       const classes = useStyles();
     return (
         <Grid class="section" container spacing={3} style={{backgroundImage:'url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/contractor-painting-a-room-in-house-royalty-free-image-660246447-1552423836.jpg)'}} >
-        <Grid class="container" style={{opacity:'0.9',paddingTop:'110px',backgroundImage:'url(https://dcassetcdn.com/design_img/3694078/629335/22017454/tpwrygs5kcf2rq4ey9vr4ak8v4_thumbnail.png)',backgroundPosition:'center top',backgroundSize:'230px',backgroundRepeat:'no-repeat'}} item xs={12}>
+        <Grid class="container" style={{height:'610px',opacity:'0.9',paddingTop:'110px',backgroundImage:'url(https://dcassetcdn.com/design_img/3694078/629335/22017454/tpwrygs5kcf2rq4ey9vr4ak8v4_thumbnail.png)',backgroundPosition:'center top',backgroundSize:'230px',backgroundRepeat:'no-repeat'}} item xs={12}>
         
-             <h1>Sign Up</h1>
-            <form className={classes.root} onSubmit={handleSubmit}> 
+        <h1>Sign Up</h1>
+             <form className={classes.root} onSubmit={handleSubmit}> 
             <TextField id="outlined-basic" label="First Name"  variant="outlined" 
              value={credentials.firstname}
              onChange={e => setCredentials({ ...credentials,firstname: e.target.value })}
@@ -86,14 +140,36 @@ const SignUpContractor = () => {
             value={credentials.lastname}
             onChange={e => setCredentials({ ...credentials,lastname: e.target.value })}
           />
+            <TextField id="outlined-basic" label="Phone Number" variant="outlined" placeholder="+923065605043"
+            value={credentials.phone_no}
+            onChange={e => setCredentials({ ...credentials,phone_no: e.target.value })}
+          />
           <TextField id="outlined-basic" label="Username" variant="outlined"
             value={credentials.username}
             onChange={e => setCredentials({ ...credentials, username: e.target.value })}
           />
-          <TextField id="outlined-basic" label="Password" type="password" variant="outlined"
+           <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
             value={credentials.password}
             onChange={e => setCredentials({ ...credentials, password: e.target.value })}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
           />
+        </FormControl>
             <Button variant="contained" type="submit" color="primary">
               Sign Up
 </Button>
@@ -102,7 +178,6 @@ const SignUpContractor = () => {
 </Button>
 
              </form>
-            
             
         </Grid>
       </Grid>

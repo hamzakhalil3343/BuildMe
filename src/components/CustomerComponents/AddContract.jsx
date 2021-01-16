@@ -3,20 +3,46 @@ import { useState ,useEffect} from 'react';
 import {TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
+import { store } from 'react-notifications-component';
+
 function AddContract(props) {
     const id = localStorage.getItem('id');
     const [customer_id,setCustomerId]= useState('') ;
     const [credentials, setCredentials] = useState({ name: '', details: '' });
 
     const handleSubmit=(event)=>{
-        alert('name and details is'+JSON.stringify(credentials));
+        // alert('name and details is'+JSON.stringify(credentials));
         event.preventDefault();
          axios.post( `http://localhost:3000/customers/${customer_id}/contract`, credentials )
            .then(res => {
-             alert('Success !');
-            // history.push('/customer');
+            store.addNotification({
+              title: "Success !",
+              message: "Successfully Added ",
+              type: "success",
+              insert: "top",
+              container: "bottom-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true
+              }
+            });
            }).catch(err=>{
-             alert(err.message);
+            // console.log(err);
+            store.addNotification({
+             title: "Failed !",
+             message: "Message "+err.message,
+             type: "danger",
+             insert: "top",
+             container: "bottom-right",
+             animationIn: ["animate__animated", "animate__fadeIn"],
+             animationOut: ["animate__animated", "animate__fadeOut"],
+             dismiss: {
+               duration: 5000,
+               onScreen: true
+             }
+           });
            });
          
        }

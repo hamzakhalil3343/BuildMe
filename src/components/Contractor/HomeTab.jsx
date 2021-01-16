@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import GetLabourComponent from './GetLabourComponent';
 import FetchComponent from './FetchComponent';
+import AcceptContract from './AcceptContract';
+import FetchContracts from './FetchContracts';
 
 
 function TabPanel(props) {
@@ -63,7 +65,7 @@ function HomeTab(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Add Team" {...a11yProps(0)} />
           <Tab label="View " {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Contract" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -73,7 +75,7 @@ function HomeTab(props) {
        <FetchComponent/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <FetchContracts/>
       </TabPanel>
     </div>
   );
