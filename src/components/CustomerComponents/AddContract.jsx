@@ -93,6 +93,7 @@ function AddContract(props) {
       <RadioGroup aria-label="gender" name="gender1" value={credentials.contract_type}  onChange={e => setCredentials({ ...credentials, contract_type: e.target.value })}>
         <FormControlLabel value="contractor" control={<Radio />} label="Contractor" />
         <FormControlLabel value="interior_Designer" control={<Radio />} label="Interior Designer" />
+        <FormControlLabel value="shops" control={<Radio />} label="Shops" />
        
       </RadioGroup>
     </FormControl>

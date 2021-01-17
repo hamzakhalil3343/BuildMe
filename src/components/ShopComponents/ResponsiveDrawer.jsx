@@ -28,6 +28,9 @@ import SelectAllIcon from '@material-ui/icons/SelectAll';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SearchIcon from '@material-ui/icons/Search';
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+import AddToPhotosOutlinedIcon from '@material-ui/icons/AddToPhotosOutlined';
+
 //Sub Components
 import IronComponent from './IronComponent';
 import GlassComponent from './GlassComponent';
@@ -37,6 +40,8 @@ import PaintsComponent from './PaintsComponent';
 import ElectricStoreComponent from './ElectricStoreComponent';
 import RentComponent from './RentComponent';
 import SearchComponent from './SearchComponent';
+import FetchContracts from './FetchContracts';
+import AddContractDetails from './AddContractDetails';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -233,6 +238,15 @@ function ResponsiveDrawer() {
                             <ListItemIcon><SearchIcon /></ListItemIcon>
                             <ListItemText primary="Search" />
                         </ListItem>
+                       
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/ViewContracts`); }} >
+                            <ListItemIcon><ImportContactsIcon /></ListItemIcon>
+                            <ListItemText primary="Contracts" />
+                        </ListItem>
+                        <ListItem button onClick={() => { history.push(`/Shops/${id}/AddDetails`); }} >
+                            <ListItemIcon><AddToPhotosOutlinedIcon /></ListItemIcon>
+                            <ListItemText primary="Add Contract Details" />
+                        </ListItem>
                         <ListItem button onClick={() => { history.push(`/Shops/${id}/rent`); }} >
                             <ListItemIcon><LocalAtmIcon /></ListItemIcon>
                             <ListItemText primary="Rent" />
@@ -264,6 +278,8 @@ function ResponsiveDrawer() {
                     <Route path="/Shops/:id/electricStore" component={ElectricStoreComponent} />
                     <Route path="/Shops/:id/rent" component={RentComponent} />
                     <Route path="/Shops/:id/search" component={SearchComponent} />
+                    <Route path="/Shops/:id/ViewContracts" component={FetchContracts} />
+                    <Route path="/Shops/:id/AddDetails" component={AddContractDetails} />
 
                    
 
