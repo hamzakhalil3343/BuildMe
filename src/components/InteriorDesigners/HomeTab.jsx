@@ -6,7 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import AddContract from './AddContract';
+import AddProject from './AddProject';
+import FetchContracts from './FetchContracts';
 
 
 
@@ -62,18 +63,18 @@ function HomeTab(props) {
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="View" {...a11yProps(0)} />
-          <Tab label="Add Contract " {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Add Project " {...a11yProps(1)} />
+          <Tab label="View Contracts" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
          
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <AddContract/>
+      <AddProject/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <FetchContracts/>
       </TabPanel>
     </div>
   );

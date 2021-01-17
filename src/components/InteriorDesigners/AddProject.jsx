@@ -5,15 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
 import {useHistory} from 'react-router-dom';
-function AddContract(props) {
+function AddProject(props) {
     const id = localStorage.getItem('id');
     const [interiorDesigner_id,setinteriorDesignerId]= useState('') ;
     const [credentials, setCredentials] = useState({ name: '', details: '' ,additionalDetails:''});
     const history =useHistory();
     const handleSubmit=(event)=>{
-        alert('name and details is'+JSON.stringify(credentials));
+       // alert('name and details is'+JSON.stringify(credentials));
         event.preventDefault();
-         axios.post( `http://localhost:3000/interiorDesigner/${interiorDesigner_id}/contract`, credentials )
+         axios.post( `http://localhost:3000/interiorDesigner/${interiorDesigner_id}/project`, credentials )
            .then(res => {
             // alert('Success !');
             store.addNotification({
@@ -51,12 +51,12 @@ function AddContract(props) {
     useEffect(() => {
          const fetchData = async () => {
             const result = await axios(
-              `http://localhost:3000/interiorDesigner/${id}/`,
+              `http://localhost:3000/interiorDesigner/${localStorage.getItem('id')}/`,
               
             );
        
             setinteriorDesignerId(result.data._id);
-            console.log('interiorDesigner_id is ',interiorDesigner_id)
+           alert('interiorDesigner_id is ',interiorDesigner_id)
           };
        
           fetchData();
@@ -82,9 +82,9 @@ function AddContract(props) {
           const classes = useStyles();
     return (
         <div>
-             <h1>Interior Designer Contract </h1>
+             <h1>Interior Designer project </h1>
              <form className={classes.root} onSubmit={handleSubmit} > 
-            <TextField id="standard-basic" name="name" label="Contract Name"
+            <TextField id="standard-basic" name="name" label="Project Name"
              value={credentials.name}
 				    onChange={e => setCredentials({...credentials,name:e.target.value})}/>
            
@@ -104,15 +104,13 @@ function AddContract(props) {
             />
             <br/>
             <Button variant="contained" type="submit" color="primary"  >
-              ADD Contract
+              ADD project
 </Button>
-<Button variant="contained" color="primary" fullWidth onClick={()=>history.push('/')}>
-  Cancel
-</Button>
+
 
              </form>
         </div>
     );
 }
 
-export default AddContract;
+export default AddProject;

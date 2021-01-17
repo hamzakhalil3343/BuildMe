@@ -4,11 +4,16 @@ import {TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 function AddContract(props) {
     const id = localStorage.getItem('id');
     const [customer_id,setCustomerId]= useState('') ;
-    const [credentials, setCredentials] = useState({ name: '', details: '' });
+    const [credentials, setCredentials] = useState({ name: '', details: '',contract_type:'' });
 
     const handleSubmit=(event)=>{
         // alert('name and details is'+JSON.stringify(credentials));
@@ -83,10 +88,18 @@ function AddContract(props) {
         <div>
              <h1>Customer Contract </h1>
              <form className={classes.root} onSubmit={handleSubmit} > 
+             <FormControl component="fieldset">
+      <FormLabel component="legend" style={{textAlign:'left'}}>Contract Type</FormLabel>
+      <RadioGroup aria-label="gender" name="gender1" value={credentials.contract_type}  onChange={e => setCredentials({ ...credentials, contract_type: e.target.value })}>
+        <FormControlLabel value="contractor" control={<Radio />} label="Contractor" />
+        <FormControlLabel value="interior_Designer" control={<Radio />} label="Interior Designer" />
+       
+      </RadioGroup>
+    </FormControl>
             <TextField id="standard-basic" name="name" label="Contract Name"
              value={credentials.name}
 				    onChange={e => setCredentials({...credentials,name:e.target.value})}/>
-           
+             
             
             <TextField id="standard-basic" label="Details" 
             value={credentials.details}

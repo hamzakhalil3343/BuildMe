@@ -71,7 +71,7 @@ function AcceptContract(props) {
           { open  &&  <div style={{width:"100%"}}>
            
           {props.data.contracts.map((row)=>(
-            row.Estimation=="" && row.contract_type =='contractor'?
+            row.Estimation=="" && row.contract_type =='interior_Designer'?
             <div style={{textAlign:'left'}}>
             <p><b>Name :</b> {row.name}</p>
             <p> <b>Details :</b> {row.details}</p>
