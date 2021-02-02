@@ -62,7 +62,7 @@ function HomeTab(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Edit Info" {...a11yProps(0)} />
           <Tab label="View " {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+         
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -71,9 +71,7 @@ function HomeTab(props) {
       <TabPanel value={value} index={1}>
        <ViewLabourComponent/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+     
     </div>
   );
 }

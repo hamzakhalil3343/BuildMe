@@ -18,7 +18,7 @@ function AddProject(props) {
             // alert('Success !');
             store.addNotification({
               title: "Welcome !",
-              message: "Successfully Sign In ",
+              message: "Successfully Added Project ",
               type: "success",
               insert: "top",
               container: "bottom-right",
@@ -56,7 +56,7 @@ function AddProject(props) {
             );
        
             setinteriorDesignerId(result.data._id);
-           alert('interiorDesigner_id is ',interiorDesigner_id)
+       //    alert('interiorDesigner_id is ',interiorDesigner_id)
           };
        
           fetchData();

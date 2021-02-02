@@ -10,7 +10,7 @@ function RemarksComponent(props) {
     e.preventDefault();
       // alert('remarks are',credentials.toString());
       // console.log('credential are ',credentials);
-      setCredentials({ ...credentials, accepted_by:localStorage.getItem('contractor_name') })
+      setCredentials({ ...credentials, accepted_by:localStorage.getItem('name') })
       axios.put(`http://localhost:3000/customers/${props.customerID}/contract/${props.contractID}`, credentials )
       .then(res => {
        
@@ -55,7 +55,7 @@ function RemarksComponent(props) {
            value={credentials.remarks}
            onChange={e => setCredentials({ ...credentials, remarks: e.target.value })}
            multiline
-           placeholder={`Enter Estimations`+`\n`+`Here`}
+           placeholder={`Enter Estimations`+`\n`+`How Long it will Take to Complete?`+`\n`+`Your Contact Info and Other Details of Project !`}
            />
            <br/>
            <Button variant="contained" type="submit" color="primary"  style={{margin:'10px',width:'80%'}}>

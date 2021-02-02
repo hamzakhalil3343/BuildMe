@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
 function AddLabourDetails(props) {
-    const [credentials, setCredentials] = useState({ labour_type: '', hrs_worked: 0, labour_rate: '', TeamPart: '' });
+    const [credentials, setCredentials] = useState({ labour_type: '', hrs_worked: 0, labour_rate: ''});
+    const [TeamPart,setTeamPart]=useState('');
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -25,7 +26,8 @@ function AddLabourDetails(props) {
           .then((response) => response.json())
           .then((data) => {
              
-             setCredentials({...credentials,labour_type:data.labour_Type,hrs_worked:data.hrs_worked,labour_rate:data.labour_rate,TeamPart:data.TeamPart});
+             setCredentials({...credentials,labour_type:data.labour_Type,hrs_worked:data.hrs_worked,labour_rate:data.labour_rate});
+             setTeamPart(data.TeamPart);
             
           })
           .catch((e) => {
@@ -92,8 +94,9 @@ function AddLabourDetails(props) {
                     onChange={e => setCredentials({ ...credentials, labour_rate: e.target.value })}
                 />
                 <TextField id="outlined-basic" label="Team Part"  variant="outlined"
-                    value={credentials.TeamPart}
-                    onChange={e => setCredentials({ ...credentials, TeamPart: e.target.value })}
+                    value={TeamPart}
+                  //  onChange={e => setCredentials({ ...credentials, TeamPart: e.target.value })}
+                    disabled
                 />
    
                 <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,backgroundColor:'#ac5353' }}>

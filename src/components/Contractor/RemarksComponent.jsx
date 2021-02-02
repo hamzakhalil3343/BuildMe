@@ -55,7 +55,7 @@ function RemarksComponent(props) {
            value={credentials.remarks}
            onChange={e => setCredentials({ ...credentials, remarks: e.target.value })}
            multiline
-           placeholder={`Enter Estimations`+`\n`+`Here`}
+           placeholder={`Enter Estimations`+`\n`+`How Long it will Take to Complete?`+`\n`+`Your Contact Info and Other Details of Project !`}
            />
            <br/>
            <Button variant="contained" type="submit" color="primary"  style={{margin:'10px',width:'80%'}}>

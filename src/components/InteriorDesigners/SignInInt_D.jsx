@@ -54,6 +54,7 @@ function SignInInt_D(props) {
       axios.post(`http://localhost:3000/users/login`, credentials )
         .then(res => {
           localStorage.setItem('id',res.data.id);
+          localStorage.setItem('name',res.data.name);
           store.addNotification({
             title: "Welcome !",
             message: "Successfully Sign In ",

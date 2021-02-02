@@ -283,12 +283,12 @@ const handleSubmit=(event)=>{
         Build Me
         </Typography>
       <nav>
-        <Link variant="button" color="textPrimary" href="/ShopSignUp" className={classes.link}>
+        {/* <Link variant="button" color="textPrimary" href="/ShopSignUp" className={classes.link}>
           Sign in
           </Link>
         <Link variant="button" color="textPrimary" href="#" className={classes.link}>
           Enterprise
-          </Link>
+          </Link> */}
         <Link variant="button" color="textPrimary" href="#" className={classes.link}>
           Support
           </Link>

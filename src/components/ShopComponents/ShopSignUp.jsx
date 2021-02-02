@@ -54,7 +54,7 @@ const ShopSignUp = () => {
            return ; 
      }
 
-     if (credentials.phone_no.toString().length < 11){
+     if (credentials.phone_number.length <= 12){
       store.addNotification({
         title: "Sign Up Failed !",
         message: "Please Add phone number Correctly",
@@ -182,9 +182,9 @@ const ShopSignUp = () => {
             value={credentials.address}
             onChange={e => setCredentials({ ...credentials, address: e.target.value })}
           />
-          <TextField id="outlined-basic" label="Phone Number" type="number" variant="outlined" placeholder="+923065605043"
+          <TextField id="outlined-basic" label="Phone Number"  variant="outlined" placeholder="+923065605043"
             value={credentials.phone_number}
-            onChange={e => setCredentials({ ...credentials, phone_no: e.target.value })}
+            onChange={e => setCredentials({ ...credentials, phone_number: e.target.value })}
           />
           <Button variant="contained" type="submit" color="primary">
             Sign Up

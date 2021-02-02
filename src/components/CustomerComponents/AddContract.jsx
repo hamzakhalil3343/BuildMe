@@ -106,7 +106,7 @@ function AddContract(props) {
             value={credentials.details}
             onChange={e => setCredentials({ ...credentials, details: e.target.value })}
             multiline
-            placeholder={`Enter deatils`+`\n`+`Here`}
+            placeholder={`Details About your Contract Goes Here ! `}
             />
             <br/>
             <Button variant="contained" type="submit" color="primary"  >

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import {TextField,Button} from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
@@ -25,6 +25,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { store } from 'react-notifications-component';
+import Rating from '@material-ui/lab/Rating';
+
 const useStyles1 = makeStyles((theme) => ({
     root: {
         flexShrink: 0,
@@ -166,45 +168,45 @@ function GetLabourComponent(props) {
 
     const [open, setOpen] = React.useState(false);
     const [credentials, setCredentials] = useState({ TeamPart: '', TeamDetails: '' });
-    const [lab_id,setLabID]=useState('');
-    const handleSubmit=(event)=>{
-       // alert('name and pass is'+JSON.stringify(credentials)+lab_id);
+    const [lab_id, setLabID] = useState('');
+    const handleSubmit = (event) => {
+        // alert('name and pass is'+JSON.stringify(credentials)+lab_id);
         event.preventDefault();
         axios.put(`http://localhost:3000/labours/${lab_id}`, credentials)
-        .then(res => {
-           // window.location.reload(false);
-            // alert('successFully saved');
-            // console.log(res.data);
-            store.addNotification({
-                title: "Added !",
-                message: "Successfully Added Labour teams ",
-                type: "success",
-                insert: "top",
-                container: "bottom-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                  duration: 5000,
-                  onScreen: true
-                }
+            .then(res => {
+                // window.location.reload(false);
+                // alert('successFully saved');
+                // console.log(res.data);
+                store.addNotification({
+                    title: "Added !",
+                    message: "Successfully Added Labour teams ",
+                    type: "success",
+                    insert: "top",
+                    container: "bottom-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                    }
+                });
+            }).catch(err => {
+                store.addNotification({
+                    title: "Failed !",
+                    message: "Message " + err.message,
+                    type: "danger",
+                    insert: "top",
+                    container: "bottom-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 5000,
+                        onScreen: true
+                    }
+                });
             });
-        }).catch(err => {
-            store.addNotification({
-                title: "Failed !",
-                message: "Message "+err.message,
-                type: "danger",
-                insert: "top",
-                container: "bottom-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                  duration: 5000,
-                  onScreen: true
-                }
-              });
-        });
-         
-       }
+
+    }
     const handleOpen = (id) => {
         setLabID(id);
         setOpen(true);
@@ -235,10 +237,10 @@ function GetLabourComponent(props) {
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">ADD to Team</h2>
                         <form className={classes.root} onSubmit={handleSubmit} >
-                            <TextField id="standard-basic" name="username" label="Project Name"
-                                value={credentials.TeamPart}  fullWidth
+                            <TextField id="standard-basic" name="username" label="Team Name"
+                                value={credentials.TeamPart} fullWidth
                                 onChange={e => setCredentials({ ...credentials, TeamPart: e.target.value })} />
- 
+
 
                             <TextField id="standard-basic" label="ADD Details" multiline
                                 value={credentials.TeamDetails}
@@ -246,10 +248,10 @@ function GetLabourComponent(props) {
                                 fullWidth
                             />
                             <br />
-                            <Button variant="contained" type="submit" color="primary" fullWidth style={{marginTop:'10px'}} >
+                            <Button variant="contained" type="submit" color="primary" fullWidth style={{ marginTop: '10px' }} >
                                 ADD
                             </Button>
-                            
+
 
                         </form>
                     </div>
@@ -270,6 +272,8 @@ function GetLabourComponent(props) {
                                 <StyledTableCell align="center">Hours Worked</StyledTableCell>
 
                                 <StyledTableCell align="center">Rate</StyledTableCell>
+                                <StyledTableCell align="center">Rating</StyledTableCell>
+
                                 <StyledTableCell align="center"> </StyledTableCell>
 
                             </TableRow>
@@ -300,12 +304,20 @@ function GetLabourComponent(props) {
                                         {row.labour_rate}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="center">
+                                        <Rating
+                                            name="simple-controlled"
+                                            value={row.Rating}
+                                            
+                                        />
+                                        
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }} align="center">
                                         <Button
                                             variant="contained"
                                             color="primary"
                                             className={classes.button}
                                             startIcon={<QueuePlayNextIcon />}
-                                            onClick={()=>handleOpen(row.labour_id)}
+                                            onClick={() => handleOpen(row.labour_id)}
                                         >
                                             ADD to Team
                                      </Button>
