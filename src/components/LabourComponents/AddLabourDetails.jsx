@@ -1,16 +1,16 @@
 import React,{useState,useEffect} from 'react';
-import {Grid,TextField,Button} from '@material-ui/core';
+import {TextField,Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { store } from 'react-notifications-component';
-function AddLabourDetails(props) {
+function AddLabourDetails() {
     const [credentials, setCredentials] = useState({ labour_type: '', hrs_worked: 0, labour_rate: ''});
     const [TeamPart,setTeamPart]=useState('');
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
                 margin: theme.spacing(1),
-                width: '65%',
+                width: '55%',
 
 
 
@@ -42,7 +42,7 @@ function AddLabourDetails(props) {
         event.preventDefault();
         const id = localStorage.getItem('id');
         axios.put(`http://localhost:3000/labours/${id}`, credentials)
-            .then(res => {
+            .then(() => {
                 // console.log(res);
                 // console.log(res.data);
                 store.addNotification({
@@ -99,7 +99,7 @@ function AddLabourDetails(props) {
                     disabled
                 />
    
-                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10,backgroundColor:'#ac5353' }}>
+                <Button variant="contained" type="submit" color="primary" style={{ width: '50%',padding:10}}>
                     <b>Add Details</b>
                 </Button>
               
