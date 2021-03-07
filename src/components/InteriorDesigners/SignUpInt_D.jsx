@@ -29,6 +29,25 @@ function SignUpInt_D(props) {
    };
    const handleSubmit=(event)=>{
      event.preventDefault();
+     const strongRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+     if (! strongRegex.test(credentials.password) && credentials.password != '')
+     { 
+       store.addNotification({
+         title: "Sign Up Failed !",
+         message: "Your Password must contain min 8 letters, with at least a symbol, upper and lower case letters and a number",
+         type: "info",
+         insert: "top",
+         container: "bottom-right",
+         animationIn: ["animate__animated", "animate__fadeIn"],
+         animationOut: ["animate__animated", "animate__fadeOut"],
+         dismiss: {
+           duration: 8000,
+           onScreen: true
+         }
+     
+     });
+            return ; 
+     }
      if (credentials.username === '' || credentials.password ==='' || credentials.lastname === '' || credentials.firstname ===''|| credentials.phone_no ==='' ){
        store.addNotification({
          title: "Sign Up Failed !",

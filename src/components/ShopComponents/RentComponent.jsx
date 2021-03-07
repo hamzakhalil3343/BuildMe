@@ -42,6 +42,23 @@ function RentComponent() {
       const classes = useStyles();
       const handleSubmit = (event) => {
         event.preventDefault();
+        if (cvc === '' || expiry ==='' ||  name ===''|| number ==='' || amount ==='' ){
+          store.addNotification({
+            title: "Failed !",
+            message: "Please fill all the Fields",
+            type: "info",
+            insert: "top",
+            container: "bottom-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+        
+        });
+               return ; 
+         }
         axios.post(`http://localhost:3000/payment`, {"name":name,"cvc":cvc,"exp_date":expiry,"number":number,"amount":amount})
         .then(res => {
            // window.location.reload(false);
@@ -122,7 +139,7 @@ function RentComponent() {
               <CreditCardIcon style={{margin:'5px'}}/>
            Pay
          </Button>
-          <Button variant="contained" color="primary" href='/'>
+          <Button variant="contained" color="primary" >
             Cancel
 </Button>
 

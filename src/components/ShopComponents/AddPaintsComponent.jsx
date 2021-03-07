@@ -25,6 +25,23 @@ const AddPaintsComponent = () => {
     const handleSubmit = (event) => {
         //alert('name and pass is'+JSON.stringify(credentials));
         event.preventDefault();
+        if (credentials.name === '' || credentials.quantitie ==='' || credentials.paint_type === '' || credentials.price ===''|| credentials.color ==='' ){
+            store.addNotification({
+              title: "Failed !",
+              message: "Please fill all the Fields",
+              type: "info",
+              insert: "top",
+              container: "bottom-right",
+              animationIn: ["animate__animated", "animate__fadeIn"],
+              animationOut: ["animate__animated", "animate__fadeOut"],
+              dismiss: {
+                duration: 5000,
+                onScreen: true
+              }
+          
+          });
+                 return ; 
+           }
         const id = localStorage.getItem('id');
         axios.post(`http://localhost:3000/shops/${id}/paints`, credentials)
         .then(res => {
