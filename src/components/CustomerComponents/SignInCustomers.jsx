@@ -143,7 +143,7 @@ const SignInCustomers = () => {
 </Button>
 
              </form>
-             <a href="#">Forgot password</a>
+             {/* <a href="#">Forgot password</a> */}
             
          </div>
         </Grid>

@@ -62,20 +62,20 @@ function HomeTab(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="View" {...a11yProps(0)} />
-          <Tab label="Add Project " {...a11yProps(1)} />
-          <Tab label="View Contracts" {...a11yProps(2)} />
+          <Tab label="Add Project" {...a11yProps(0)} />
+          <Tab label="View Contracts " {...a11yProps(1)} />
+          {/* <Tab label="View " {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-         
-      </TabPanel>
-      <TabPanel value={value} index={1}>
       <AddProject/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        <FetchContracts/>
+      <TabPanel value={value} index={1}>
+      <FetchContracts/>
       </TabPanel>
+      {/* <TabPanel value={value} index={2}>
+        
+      </TabPanel> */}
     </div>
   );
 }

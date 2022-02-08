@@ -31,7 +31,8 @@ function ContractorCardComponent(props) {
     const [open,setOpen]= React.useState(false);
     const [value,setValue]= React.useState('');
     const [lab_id,setLabID]=React.useState(props.data._id);
-    const [credentials, setCredentials] = React.useState({ name: props.data.profile_name, comment: '',rating: '' });
+    const [credentials, setCredentials] = React.useState({ name: '', comment: '',rating: '' });
+    // props.data.profile_name
 
     const classes = useStyles();
     const handleSubmit=(event)=>{
