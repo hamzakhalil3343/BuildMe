@@ -14,7 +14,7 @@ You can clone or download then run :
 ### `npm i`
 ### `npm start`
 
-##  See project Documtation from here Project Documentation.pdf
+##  See project Documtation from here https://github.com/hamzakhalil3343/BuildMe/blob/master/Project%20Documentation.pdf
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
